@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>请假管理</title>
+		<meta charset="utf-8" />
+	</head>
+
+	<body>
+		<div class="page" id="page-repair">
+			<!-- 标题栏 -->
+			<v-bar title="创建报修申请">
+				<a class="icon icon-left pull-left back no-transition" href="mobile-working.html" slot="left"></a>
+			</v-bar>
+			<div class="content repair-content">
+                     <div id="form-repair">
+								<ul class="repair-list" style="margin-top:0px;">
+									<li>
+										<label>报修人:</label>
+										<input id="personname" type="text" value="" readonly="readonly"/>
+									</li>
+									<li>
+										<div style="display: flex;">
+											<label style="width: 50px;">类&nbsp;&nbsp;别:</label>
+											<input style="flex: 1; margin-top: -4px;" id="repair-t" type="text" data-type="" placeholder="请选择报修类别" readonly="readonly"/>
+										</div>
+										<div id="repair-cho">
+											<ul class="repair-type">
+												<li>
+													<a data-type="2">基建</a>
+												</li>
+												<li>
+													<a data-type="1">电教</a>
+												</li>
+
+											</ul>
+										</div>
+									</li>
+
+									<li>
+										<label>位&nbsp;&nbsp;置:</label>
+										<input id="classname" type="text" value="" placeholder="请填写位置"/>
+									</li>
+									<li>
+										<label >描&nbsp;&nbsp;述:</label>
+										<textarea id="repaircontent" value="" style="resize: none;width:300px;height: 4rem;background: #EEEEEE;border-radius: 5px 5px 0px 0px;margin-left: 20px; padding-right: 40px;"></textarea>									   															
+									</li>                         
+								</ul>
+								  <div class="re-p"> 
+                                    	<span id="repair-upload" class="repairadd icon icon-picture"></span>
+                                    	 <ul class="repair-pic">						    	
+									    </ul>
+                                   </div>
+                                <div class="va-sub" >
+	                    	        <a class="sub repair-ok">提交申请</a>
+	                             </div>	
+							</div>
+			
+				
+			</div>
+
+		</div>
+	</body>
+   
+</html>

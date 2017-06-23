@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<div class="page" id="page-mobileworking">
+			<v-bar title="移动办公">
+				<a class="icon icon-left pull-left  no-transition back" slot="left"></a>
+			</v-bar>
+
+			<div class="content">
+				<div class="swiper-container">
+					<div class="swiper-wrapper">
+						<!--<div class="swiper-slide"><img src="assets/img/main/banner.png"/></div>-->
+						<div class="swiper-slide"><img src="assets/img/banner/banner1.jpg" style="width: 100%; height: 170px;"/></div>
+						<div class="swiper-slide"><img src="assets/img/banner/banner2.png" style="width: 100%; height: 170px;"/></div>
+					</div>
+				</div>
+				<!--   		<div class="mw-tab">
+		 	      			 <ul class="clearfix">		 	
+		 	      			 	<li class="mw-vacation">
+		 	      			 		<a href="page-myvacation.html">我的请假</a>
+		 	      			 		<i>1</i>
+		 	      			 	</li>
+		 	      			 	<li class="mw-repair"> 	      			 		
+		 	      			 		<a href="page-myapply.html">我的报修</a>
+		 	      			 		<i>1</i>
+		 	      			 	</li>
+		 	      			 </ul>
+		 	      			
+		 	      		</div>-->
+				<ul class="mw-content clearfix">
+					<li class="{{item.menu_REMARK}}" v-for="item in items" v-on:click="choseItem(item.menu_URL)">
+						<a><span>{{item.menu_NAME}}</span></a>
+					</li>
+				</ul>
+
+			</div>
+		</div>
+	</body>
+
+</html>

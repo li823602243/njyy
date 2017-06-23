@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body> 
+		<div class="page" id="page-list-vacate">
+			<v-bar  title="请假列表">
+				<a class="icon icon-left pull-left back no-transition" slot="left"></a>
+			</v-bar>
+			<div class="content pull-to-refresh-content infinite-scroll" data-ptr-distance="50">
+			  <div class="list-block media-list list-block-notice">
+			  	<!--下拉刷新-->
+				<div class="pull-to-refresh-layer">
+				    <div class="preloader"></div>
+				    <div class="pull-to-refresh-arrow"></div>
+				</div>
+			  <ul class="list-vacate" style="padding: 0 15px;">
+			  <li  class="cc{{$index%5}}" v-on:click="vacationMd5(item.MD5CODE)" v-for="item in vacatList"  track-by="$index">
+			    <h3>
+			    	<i style="color: #000000;" class="icon icon-message" ></i> {{item.ITEM_VALUE}}
+			    </h3>
+			    <div class="vacate-day" >
+			    <label>天&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数:</label>
+			    <span>{{item.VACATE_DAYS}} 天</span>
+			    </div>
+			    <div class="vacate-day" >
+			    <label>请假人:</label>
+			    <span>{{item.STUDENT_NAME}}</span>
+			    </div>
+			    <div class="vacate-date">
+			    <label>休假日期:</label>
+			    <span>{{item.START_TIME.substr(0,10)}}</span>
+			    <span>——</span>
+			    <span>{{item.END_TIME.substr(0,10)}}</span>
+			  </div>
+			  <div class="va-time" >{{getTimeTip(item.CREATE_TIME)}}</div>
+			</li>
+			 </ul>
+			    </div>
+			    	 <!--preloader-->
+				<div class="infinite-scroll-preloader"></div>
+			</div>
+		</div>	
+	</body>
+</html>

@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--
+        	作者：左武洲
+        	时间：2016-08-25
+        	描述：聊天页面
+        -->
+		<div class="page" id="page-chat-panel">
+			<v-bar :title="name">
+				<a class="icon icon-left pull-left back no-transition" slot="left"></a>
+			</v-bar>
+			<div class="content" style="margin-bottom: 70px;">
+				<div id="chatPanelList" class="chat-msg-list">
+					<div class="chat-msg-item clearfix" v-for="item in chatList" :class="{'msg-item-self':item.isSelf}" track-by="$index">
+						<img class="msg-user"  src="assets/img/circles/test_1.png" />
+						<div class="msg-user-name">{{item.from}}</div>
+						<div class="msg-content">
+							<div class="msg-content-inner">
+								{{{parseEmoji(item.content)}}}				
+							</div>
+							<div class="msg-content-arrow"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<footer>
+				<div class="chat-action-panel">
+					<div class="chat-footer-left">
+						<span class="icon icon-menu" id="chatActionBtn"></span>
+					</div>
+					<div class="chat-footer-center">
+						<input id="chatMsgInput"  type="text" class="input-text"/>
+					</div>
+					<div class="chat-footer-right">
+						<span class="icon icon-emoji" id="chatEmotionBtn"></span>
+						<button id="sendChatMsgBtn" class="button button-fill button-success">发送</button>
+					</div>
+				</div>
+				<div class="chat-emotion-panel" id="chatEmotionPanel">
+					
+				</div>
+			</footer>
+		</div>
+	</body>
+</html>

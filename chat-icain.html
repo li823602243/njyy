@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<!--
+        	作者：张大亨
+        	时间：2017-04-24
+        	描述：聊天页面
+        -->
+		<div class="page" id="chat-icain">
+			<v-bar :title="name">
+				<a class="icon icon-left pull-left back no-transition" slot="left"></a>
+			</v-bar>
+			<div class="record-list-wrapper">
+				<div v-on:click="hidenSelectControl()" class="record-list-area">
+					<div v-for="message in messages" class="record-list-repeat">
+						<div v-if="message.stat" class="record-list-repeat-left">
+							<div class="record-list-repeat-time" style="font-size: 12px; margin-left: 52px;">{{message.time}}</div>
+							<img class="record-list-repeat-header" :src="otherPic" alt="" onerror="this.src='./assets/img/header.png'" />
+							<div class="record-list-repeat-info record-list-margin-left record-list-left-text">
+								<div class="record-list-left-triangle"></div>
+								<div v-if="message.type == 'sound' && message.content == ''" @click="lisener(message.path, $event)" class="record-list-repeat-sound"><span class="ion-play" style="font-size: 15px; margin: auto 10px;"></span>点击播放</div>
+								{{{message.content}}}
+							</div>
+						</div>
+						<div v-if="!message.stat" class="record-list-repeat-right">
+							<div class="record-list-repeat-time" style="font-size: 12px; margin-right: 52px;">{{message.time}}</div>
+							<div class="record-list-repeat-info record-list-margin-right record-list-right-text">
+								<div class="record-list-right-triangle"></div>
+								<div v-if="message.type == 'sound' && message.content == ''" @click="lisener(message.path, $event)" class="record-list-repeat-sound"><span class="ion-play" style="font-size: 15px; margin: auto 10px;"></span>点击播放</div>
+								{{{message.content}}}
+							</div>
+							<img class="record-list-repeat-header" :src="minePic" alt="" onerror="this.src='./assets/img/header.png'"/>
+						</div>
+					</div>
+				</div>
+				<div class="record-control-area">
+					<div class="record-control-bar">
+						<img v-show="sendSound" v-on:click="sendSoundMessage()" class="record-control-btn" src="./assets/img/btn/voice.png" alt="" />
+						<span v-show="!sendSound" v-on:click="sendSoundMessage()" class="ion-compose" style="font-size: 30px; color: #FFFFFF; margin: auto 5px auto 10px;"></span>
+						<input v-show="sendSound" v-on:click="hidenSelectControl()" id="input-area" type="text" class="record-control-input" v-on:keyup.enter="send()" style="outline: none;" v-model="inputMessage" />
+						<input v-show="!sendSound" id="input-sound" type="button" class="record-control-input" value="按住说话" style="color: #7C7C7C; -webkit-user-select: none;" />
+						<!--<div v-on:tap="hidenSelectControl()" id="input-area" class="record-control-input" contenteditable="true" v-on:keyup.enter="send()" style="outline: none; overflow-x: hidden;">
+							{{{sendMsg}}}
+						</div>-->
+						<!--<input v-model="sendMsg" v-on:focus="hidenSelectControl()" v-on:keyup.enter="send()" class="record-control-input" type="text" name="" id="" value="" />-->
+						<img v-on:click="selectControl('showSmile')" class="record-control-btn" src="./assets/img/btn/smile.png" alt="" />
+						<img v-show="inputMessage==''" v-on:click="selectControl('showMore')" class="record-control-btn" style="margin-left: 0;" src="./assets/img/btn/more.png" />
+						<span v-show="inputMessage!=''" v-on:click="send()" class="record-control-btn" style="margin: 8px 5px 8px 0; width: 70px; font-size: 15px; border: 1px solid #FFFFFF; border-radius: 5px; padding: 0; color: #FFFFFF; text-align: center; line-height: 27px;">发送</span>
+					</div>
+					<div class="record-control-voice" v-show="showVoice" style="background-color: #FFFFFF; width: 100%; text-align: center; padding: 20px auto;">
+						<span id="input-sound" class="icon icon-message" style="font-size: 50px; color: #000000; margin: 10px;"></span>
+					</div>
+					<div class="record-control-smile" v-show="showSmile" style="background-color: #FFFFFF;">
+						<img src="./assets/img/faces/ee_1.png" alt="" v-on:click="selectExpression('[微笑]')" />
+						<img src="./assets/img/faces/ee_2.png" alt="" v-on:click="selectExpression('[开心]')" />
+						<img src="./assets/img/faces/ee_3.png" alt="" v-on:click="selectExpression('[眉眼]')" />
+						<img src="./assets/img/faces/ee_4.png" alt="" v-on:click="selectExpression('[流汗]')" />
+						<img src="./assets/img/faces/ee_5.png" alt="" v-on:click="selectExpression('[美味]')" />
+						<img src="./assets/img/faces/ee_6.png" alt="" v-on:click="selectExpression('[帅气]')" />
+						<img src="./assets/img/faces/ee_7.png" alt="" v-on:click="selectExpression('[生气]')" />
+						<img src="./assets/img/faces/ee_8.png" alt="" v-on:click="selectExpression('[撇嘴]')" />
+						<img src="./assets/img/faces/ee_9.png" alt="" v-on:click="selectExpression('[委屈]')" />
+						<img src="./assets/img/faces/ee_10.png" alt="" v-on:click="selectExpression('[不开心]')" />
+						<img src="./assets/img/faces/ee_11.png" alt="" v-on:click="selectExpression('[流泪]')" />
+						<img src="./assets/img/faces/ee_12.png" alt="" v-on:click="selectExpression('[尴尬]')" />
+						<img src="./assets/img/faces/ee_13.png" alt="" v-on:click="selectExpression('[大笑]')" />
+						<img src="./assets/img/faces/ee_14.png" alt="" v-on:click="selectExpression('[坏笑]')" />
+						<img src="./assets/img/faces/ee_15.png" alt="" v-on:click="selectExpression('[奸笑]')" />
+						<img src="./assets/img/faces/ee_16.png" alt="" v-on:click="selectExpression('[吐]')" />
+						<img src="./assets/img/faces/ee_17.png" alt="" v-on:click="selectExpression('[瞌睡]')" />
+						<img src="./assets/img/faces/ee_18.png" alt="" v-on:click="selectExpression('[呆]')" />
+						<img src="./assets/img/faces/ee_19.png" alt="" v-on:click="selectExpression('[傲慢]')" />
+						<img src="./assets/img/faces/ee_20.png" alt="" v-on:click="selectExpression('[闭嘴]')" />
+						<img src="./assets/img/faces/ee_21.png" alt="" v-on:click="selectExpression('[偷笑]')" />
+						<img src="./assets/img/faces/ee_22.png" alt="" v-on:click="selectExpression('[哼]')" />
+						<img src="./assets/img/faces/ee_23.png" alt="" v-on:click="selectExpression('[萎靡]')" />
+						<img src="./assets/img/faces/ee_24.png" alt="" v-on:click="selectExpression('[心]')" />
+						<img src="./assets/img/faces/ee_25.png" alt="" v-on:click="selectExpression('[心碎]')" />
+						<img src="./assets/img/faces/ee_26.png" alt="" v-on:click="selectExpression('[月亮]')" />
+						<img src="./assets/img/faces/ee_27.png" alt="" v-on:click="selectExpression('[星星]')" />
+						<img src="./assets/img/faces/ee_28.png" alt="" v-on:click="selectExpression('[太阳]')" />
+						<img src="./assets/img/faces/ee_29.png" alt="" v-on:click="selectExpression('[彩虹]')" />
+						<img src="./assets/img/faces/ee_30.png" alt="" v-on:click="selectExpression('[色]')" />
+						<img src="./assets/img/faces/ee_31.png" alt="" v-on:click="selectExpression('[亲亲]')" />
+						<img src="./assets/img/faces/ee_32.png" alt="" v-on:click="selectExpression('[吻]')" />
+						<img src="./assets/img/faces/ee_33.png" alt="" v-on:click="selectExpression('[玫瑰]')" />
+						<img src="./assets/img/faces/ee_34.png" alt="" v-on:click="selectExpression('[落花]')" />
+						<img src="./assets/img/faces/ee_35.png" alt="" v-on:click="selectExpression('[棒]')" />
+					</div>
+					<div class="record-control-more" v-show="showMore">
+						<div style="background-color: #FFFFFF; justify-content: space-around; width: 100%; display: flex !important;">
+							<div v-on:click="selectPic()" style="display: inline-block; width: 70px; height: 70px; text-align: center; border: 1px solid #B5B5B5; border-radius: 7px; margin: 10px 0; box-shadow: 1px 0px 13px #d9d9d9 inset;">
+								<span class="ion-images" style="font-size: 50px;"></span>
+							</div>
+							<div v-on:click="photograph()" style="display: inline-block; width: 70px; height: 70px; text-align: center; border: 1px solid #B5B5B5; border-radius: 7px; margin: 10px 0; box-shadow: 1px 0px 13px #d9d9d9 inset;">
+								<span class="ion-camera" style="font-size: 50px;"></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="input-sound-show" style="-webkit-user-select: none;">
+				<span class="ion-android-microphone"></span>
+				<p id="input-sound-show-cancel" class="input-sound-text">上滑取消发送</p>
+			</div>
+		</div>
+	</body>
+	<script>
+		
+	</script>
+</html>

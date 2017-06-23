@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>一幼圈</title>
+	</head>
+
+
+<body>
+<div class="page" id="notice">
+	<v-bar title="公告">
+		<a class="icon icon-left pull-left no-transition" slot="left" href="#page-main"></a>
+	</v-bar>
+<div class="content pull-to-refresh-content infinite-scroll" data-ptr-distance="50">
+  <div class="list-block media-list list-block-notice">
+  	<!--下拉刷新-->
+	<div class="pull-to-refresh-layer">
+	    <div class="preloader"></div>
+	    <div class="pull-to-refresh-arrow"></div>
+	</div>
+    <ul class="list-block">
+      <li v-on:click="href(item)" v-for="item in messageList" class="notice_list">
+          <div class="item-inner item-inner-content">
+          	<div class="item-inner-left"  :class="{ 'item-inner-left-none': item.FILE_PATH == '' || !item.FILE_PATH}">
+            <div class="item-title-row">
+              <div class="item-title">{{item.NO_TITLE}}</div>
+            </div>
+            <div class="item-text" style="word-break: break-all;">{{item.NO_CONTENT}}</div>
+            <div class="item-foot"><span>{{getTimeTip(item.NO_DATE)}}</span></div>
+            </div>
+            <img class="avar" v-show="item.FILE_PATH" src="{{imgPath + item.FILE_PATH}}" height="90" width="90">
+          </div>
+      </li>
+    </ul>
+    </div>
+    	 <!--preloader-->
+	<div class="infinite-scroll-preloader"></div>
+</div>
+</div>		
+</body>
+</html>

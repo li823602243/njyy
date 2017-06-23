@@ -1,0 +1,67 @@
+<!--
+	作者：wangshujing@jsruiyin.com
+	时间：2016-06-23
+	描述：我的工资单
+-->
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>我的工资单</title>
+	</head>
+
+	<body>
+		<div class="page" id="mine-my-payroll" >
+
+			<header class="bar bar-nav vBar-header page-top-bar" style="height: 10rem">
+				<a class="icon icon-left pull-left back no-transition"></a>
+				<h1 class="title">我的工资单</h1>
+			</header>
+
+			<div id="minePayrollContainer" class="swiper-container bar bar-header-secondary payroll-header-secondary" style="border-bottom: none;" v-cloak>
+				<div class="swiper-wrapper">
+					<div v-for="item in wageList" class="swiper-slide payroll-total-box">
+						<div class="payroll-date" >{{item.WAGES_DATE}}</div>
+						<div class="mine-payroll-white-margin pull-left"></div>
+						<div class="mine-payroll-white-margin pull-right"></div>
+						<div class="payroll-total">
+							<div class="payroll-total-left">
+								<div>本月发放工资总额</div>
+								<div class="payroll-number-color" >￥{{parseFloat(item.BASE_PAY)+parseFloat(item.SUBSIDY)}}</div>
+							</div>
+							<div class="payroll-total-right">
+								<div class="top">
+									<div class="payroll-text">基本工资</div>
+									<div class="payroll-number-color" >￥{{item.BASE_PAY}}</div>
+								</div>
+								<div class="bottom">
+									<div>其他补贴</div>
+									<div class="payroll-number-color" >￥{{item.SUBSIDY}}</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			 </div>
+			<div class="list-block" style="margin-top: 10.4rem;">
+				<ul class="mine-payroll-list">
+					<li class="item-content">
+						<div class="item-inner">
+							<div class="item-title">岗位工资</div>
+							<div class="item-after" >(￥{{wageList[activeIndex].POST_WAGE?wageList[activeIndex].POST_WAGE:'0'}})</div>
+						</div>
+					</li>
+					<li class="item-content">
+						<div class="item-inner">
+							<div class="item-title">五险一金</div>
+							<div class="item-after item-after-danger" >(￥{{wageList[activeIndex].EMUEMH?wageList[activeIndex].EMUEMH:'0'}})</div>
+						</div>
+					</li>	
+				</ul>
+			</div>
+		 
+		</div>
+	</body>
+
+</html>

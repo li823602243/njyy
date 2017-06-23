@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>一幼圈</title>
+	</head>
+
+
+<body>
+<div class="page" id="page-leaveSummary" v-cloak>
+	<v-bar title="请假汇总">
+		<a class="icon icon-left pull-left back no-transition" slot="left"></a>
+	</v-bar>
+  <div class="content" v-cloak>
+  <div class="list-block media-list list-block-notice">
+	    <div class="card">
+	    <div class="card-content">
+	      <div class="card-content-inner">
+	      	<div  id="customers">
+	      			<div class="row row-th">
+	      			<div class="table-td">机构</div>
+	      			<div class="table-td">当天请假</div>
+	      			<div class="table-td">明天请假</div>
+	      			<div class="table-td">后天请假</div>
+	      			</div>
+	      			<div class="row" @click="clickClass" :class="{'active-summary':show===true}">
+	      			<div class="table-td">全校</div>
+	      			<div class="table-td">{{summaryList.onedayNum}}</div>
+	      			<div class="table-td">{{summaryList.twodayNum}}</div>
+	      			<div class="table-td">{{summaryList.thrdayNum}}</div>
+	      			</div>
+	      	</div>
+	      </div>
+	    </div>
+	   </div>
+	   <div class="card" v-if="show">
+	   <div class="card-content">
+	      <div class="card-content-inner">
+	      	<div  id="customers">
+	      			<div class="row row-th">
+	      			<div class="table-td">机构</div>
+	      			<div class="table-td">当天请假</div>
+	      			<div class="table-td">明天请假</div>
+	      			<div class="table-td">后天请假</div>
+	      			</div>
+	      			<div class="row" @click="showDetailClass($index,item.SUP_ORG_ID)" :class="{'active-summary':activeName===item.SUP_ORG_ID}" v-for="item in summaryListClass">
+	      			<div class="table-td">{{item.ORGNAME}}</div>
+	      			<div class="table-td">{{item.TODAY}}</div>
+	      			<div class="table-td">{{item.TWODAY}}</div>
+	      			<div class="table-td">{{item.THRDAY}}</div>
+	      			</div> 			
+	      	</div>
+	      </div>
+	    </div>
+	     </div>
+	   <div class="card" v-if="showDetail">
+	   <div class="card-content">
+	      <div class="card-content-inner">
+	      	<div id="customers">
+	      			<div class="row row-th">
+	      			<div class="table-td">机构</div>
+	      			<div class="table-td">当天请假</div>
+	      			<div class="table-td">明天请假</div>
+	      			<div class="table-td">后天请假</div>
+	      			</div>
+	      			<div class="row" v-for="item in summaryListDetail">
+	      			<div class="table-td">{{item.ORG_NAME}}</div>
+	      			<div class="table-td">{{item.TODAY}}</div>
+	      			<div class="table-td">{{item.TWODAY}}</div>
+	      			<div class="table-td">{{item.THRDAY}}</div>
+	      			</div>	
+	      	</div>
+	      </div>
+	    </div>
+	     </div>
+	  </div>
+	  </div>
+   </div>
+</body>
+</html>

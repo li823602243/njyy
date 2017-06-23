@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>专家答疑</title>
+		<style type="text/css">
+			
+		</style>
+	</head>
+
+	<body>
+		<div class="page" id="expert-answer">
+			<v-bar title="专家答疑">
+				<a class="icon icon-left pull-left back no-transition" slot="left"></a>
+			</v-bar>
+
+			<div class="content pull-to-refresh-content infinite-scroll" data-ptr-distance="50">
+				<!--下拉刷新-->
+				<div class="pull-to-refresh-layer">
+				    <div class="preloader"></div>
+				    <div class="pull-to-refresh-arrow"></div>
+				</div>
+				<div class="content-refresh-wrapper">
+					 <div class="head-first">
+					     <span>专家答疑</span>
+					 	<a class="icon icon-down pull-right"></a>
+		            </div>
+					 <ul class="expert-content">
+					 	<li v-for="item1 in items1" v-on:click="showMore()">
+					 		<div class="exp-title" v-bind:class="{'word-break': wordBreak}" style="overflow: hidden; text-overflow: ellipsis; width: 100%; font-size: 15px;">{{item1.CONTENT}}</div>
+					 		<p class="exp-content" style="font-size: 14px;">{{{item1.ANSWER}}}</p>
+		                    <div class="exp-foot">
+							<a class="exper-discuss-author">{{item1.RELEASE_PERSON}}</a>
+							<a class="exper-discuss-date">{{item1.RELEASE_DATE}}</a>
+						</div>
+					 	</li>
+					 </ul>
+					 <div class="head-second">
+					 	<span>话题投票</span>
+					 	<a class="icon icon-down pull-right"></a>
+					 </div>
+					 <form id="expert-answer-qustion" style="margin-bottom: 20px;">
+					 	<input type="hidden" id="recordPeopleId"  name="recordPeopleId" value="">
+					 	<input type="hidden" id="num"  name="num" value="">
+						<ul>
+							<div class="next-vote" style="word-break: break-all; width: 100%; text-align: center; font-size: 15px;">请选择下期话题</div>
+							<li v-for="item in items">
+							    <label class="label-checkbox item-content row no-gutter" style="display: flex;">
+							    	<input type="checkbox"  name="detailId" value="{{item.VOTE_DETAIL_ID}}" class="check-box-type" v-on:click="choose($index,item)">
+							    	<div class="item-media col-15" style="width: 29px;"><i class="icon icon-form-checkbox"></i></div>
+							    	<div class="col-65" style="word-break: break-all; flex: 1; font-size: 14px;">{{item.CONTENT}}</div>
+							    	<div class="col-20" style="width: 29px;">{{item.NUM}}票</div>
+							    </label>
+							</li>
+							<div class="expert-button" style="border-radius: 5px; margin-top: 10px;">
+							  	<a href="#" id="expert-answer-button" style="display: block; width: 100%; height: 100%;" >提交投票</a>
+							</div>
+						</ul>
+					</form>
+				</div>
+			</div>
+
+		</div>
+	</body>
+
+</html>

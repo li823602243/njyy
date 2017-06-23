@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    <title>报修详情</title>
+    <meta charset="utf-8" />
+</head>
+
+<body>
+  <div class="page" id="page-repair-information">
+        <!-- 标题栏 -->
+        <v-bar title="报修申请详情">
+           <a class="icon icon-left pull-left back no-transition" slot="left"></a>
+        </v-bar>
+	    <div class="content" v-cloak>
+
+				<ul class="vacation-information-list" >
+					<li >
+						<label>申请人:</label>
+						 <span>{{repair.clientRepairDTO.person_NAME}}</span>
+					</li>
+					<li>
+						<label>类&nbsp;&nbsp;&nbsp;&nbsp;别:</label>
+						<span>{{repair.clientRepairDTO.item_VALUE}}</span>
+					</li>
+				
+					<li style="display: flex;">
+						<label style="width: 60px;">位&nbsp;&nbsp;&nbsp;&nbsp;置:</label>
+						<span style="display: inline-block; flex: 1;">{{repair.clientRepairDTO.class_NAME}}</span>
+					</li>
+					<li>
+						<label>描&nbsp;&nbsp;&nbsp;&nbsp;述:</label>
+						  <div class="repairinforimg">
+						  	<p>{{repair.clientRepairDTO.repair_REASON}}</p>
+						  	<ul >
+						  		<li v-for="item in getImagePath(repair.clientRepairDTO.path)">
+						  			<!--<img v-on:click="enlargePic(item)" src="{{imgPath + item}}" />-->
+						  			<a href="{{imgPath + item}}" data-lightbox="detail">
+										<img class="yy-circle-item-image" src="{{imgPath + item}}" data-src="{{imgPath + item}}" />
+									</a>
+						  		</li>
+						  		
+						  	</ul>
+						  	<!--<div v-show="bigPic" v-on:click="hiddenBigPic()" class="icain-mark-layer" transition="mark" style="z-index: 999;"></div>
+					  		<img v-show="bigPic" class="icain-bigPic-layer" transition="bigPic" :src="bigPicSrc" alt="大图"  style="z-index: 999;"/>-->
+						  	<div class="clearfix"></div>
+						  </div>
+						  
+					</li>
+
+					  <div  class="read" >	
+			             <div v-if="role==1003"></div> 
+			              <button v-else id="hurrybtn" @click="cuiyicui()">催一催</button> 
+			           </div>
+				</ul>
+		<div class="repairprolist">	
+			<h4>审批操作节点</h4>
+		 	<ul >
+		 		<li>
+		 			<div class="bg-repair1"></div>
+		 			<span>提交</span>
+		 		</li>
+		 		<li>
+		 			<div class="bg-repair2"></div>
+		 			<span>处理中</span>
+		 		</li>
+		 		<li >
+		 			<div  class="bg-repair4"  id="waiting"></div>
+		 			<span>已修完</span>
+		 		</li>
+		 		<li>
+		 			<div class="bg-repair3"id="laststep"></div>
+		 			<span>完成</span>
+		 		</li>
+		 	</ul>
+		 	<div id="acceptsubbtn" class="sub-repair" @click="confirmClick()">
+		 		<span>确认</span>
+		 	</div>
+		 	<div id="repairsubbtn" class="sub-repair" @click="finishedClick()">
+		 		<span>完成</span>
+		 	</div>
+		 </div>	
+		
+	    </div>
+	
+   </div>
+   <script type="text/javascript">
+   	 	
+          
+   </script>
+</body>
+</html>

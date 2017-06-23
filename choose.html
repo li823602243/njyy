@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>选择人员列表</title>
+	</head>
+
+	<body>
+		<div class="page" id="page-choose">
+			<v-bar title="选择人员列表">
+				<a class="icon icon-left pull-left back no-transition" slot="left"></a>
+			</v-bar>
+			<div class="content">
+				<div class="choose-search">
+					<input type="text" placeholder="搜索" v-model="name" />
+				</div>
+				<div class="choose-list">
+					<ul>
+						<li class="clearfix" v-on:click="chooseherf(user.name,user.id)" v-for="user in users | filterBy name in 'name'">
+							<div class="choose-headimg">
+								<span>黄</span>
+							</div>
+							<div class="choose-p">
+								<label>{{user.name}}</label>
+								<span>教职工</span>
+							</div>
+						</li>
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>
+	

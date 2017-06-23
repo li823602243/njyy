@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>我的收藏</title>
+	</head>
+	<body>
+		<div class="page bg-white" id="page-favorite">
+			<v-bar title="我的收藏">
+				<a class="icon icon-left pull-left back" slot="left"></a>
+			</v-bar>
+			<div class="content  infinite-scroll" data-distance="100">
+				<ul class="favorite-list list-block " style="margin: 0;padding: 0;width: 100%;">
+					<li  v-on:click="favoritehref(item.ITEM_URL)"  id='{{item.FAVORITE_ID}}' v-for="item in favoriteList" class="swipeout favorite-list-item" >
+						<div class="swipeout-content favorite-item-container">
+							<img class="favorite-item-img" src="assets/img/circles/yyIntroduce.png" />
+							<label class="favorite-name">{{item.NAME}}</label>
+							<div class="favorite-item-content">
+								
+								<p class="favorite-item-simple-message">{{item.CONTENT}}</p>
+								<!--<img src="assets/img/psb.jpg" width="120px"height="30px" />-->
+							</div>
+							<span class="favorite-item-time">{{getTimeTip(item.COLLECT_TIME)}}</span>
+						</div>
+						<div class="swipeout-actions-right">
+							<a class="swipeout-close bg-danger" @click.stop="delete(item)"><i class="icon icon-remove"></i> </a>
+						</div>
+					</li>
+				</ul>
+				<!--下拉加载-->
+				<div class="infinite-scroll-preloader">
+			    </div>
+			</div>
+		</div>
+		
+	</body>
+</html>

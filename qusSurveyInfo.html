@@ -1,0 +1,33 @@
+<!--
+	作者：wangshujing@jsruiyin.com
+	时间：2016-07-08
+	描述：问卷调查采集调查者信息
+-->
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>采集调查者信息</title>
+	</head>
+
+	<body>
+		<div class="page" id="qus-survey-info">
+			<v-bar title="学生个人职业规划调查">
+				<a class="icon icon-left pull-left back no-transition" slot="left"></a>
+			</v-bar>
+			<div class="content" style="background: white">
+				<div class="qus-detail-title">请填写您的基本信息</div>
+				<input name="cellNum" class="qus-info-cellNum" type="text" placeholder="手机号码" />
+				<input name="checkCode" class="qus-info-checkCode pull-left" type="text" placeholder="验证码" /><button class="qus-get-checkCode pull-left">获取验证码</button>
+				<input name="name" class="qus-info-cellNum" placeholder="姓名" type="text" />
+				<div class="qus-detail-title">您当前对我校的教育方针意见</div>
+				<textarea class="qus-info-suggest"></textarea>
+				<div class="btn-current-phonenum-box">
+					<div id="qus-survey-next" class="btn-current-phonenum">下一步(1/2)</div>
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>

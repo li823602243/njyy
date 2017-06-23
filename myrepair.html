@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body> 
+		<div class="page" id="page-list-repair">
+			<v-bar v-if="roleId==1" title="我的报修">
+				<a class="icon icon-left pull-left back no-transition" slot="left"></a>
+			</v-bar>	
+		        	<div id="tab2" style="top: 2rem" class=" content infinite-scroll" data-distance="100">
+		        		<ul class="list-repair" >
+			        		<li class="cc{{$index%5}}" v-on:click="repairMd5(item.MD5CODE)" v-for="item in repairList"  track-by="$index">
+			        		    <h3 >
+			        		    	<i style="color: #000000;" class="icon icon-message" ></i> {{item.ITEM_VALUE}}
+			        		    </h3>
+			        		    <div class="clearfix" > 	
+			        		    <div class="repair" style="float: left;">
+			        		    	
+			        		     <label>报修人:</label>
+			        		     <span>{{item.PERSON_NAME}}</span>
+			        		     </div>
+			        		     <div class="" style="margin-left: 2rem;display: inline-block;" >
+			        		     <label>报修日期:</label>
+			        		       <span>{{item.REPAIR_DATE.substr(0,10)}}</span>
+			        		      </div>
+			        		     </div>  
+			        		       <div class="repair">
+				        		       <label>位置:</label>
+				        		       <span>{{item.CLASS_NAME}}</span>
+			        		       </div>
+			        		       <div class="repair">
+			        		     <label>原因:</label>
+			        		       <span>{{item.REPAIR_REASON}}</span>
+			        		    </div>	    
+			        		</li>
+			        	 </ul>
+		        		<!--preloader-->
+		        	    <div class="infinite-scroll-preloader"></div>
+		        	</div>
+	       	
+	
+			</div>	
+
+		
+	</body>
+</html>

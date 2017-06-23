@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>园长信箱</title>
+	</head>
+	<body>
+		<div class="page" id="page-email">
+			<v-bar title="院长信箱">
+                <a class="icon icon-left pull-left no-transition back" slot="left"></a>
+             </v-bar>
+             <div class="content">
+				<div class="email-c clearfix" style="position: absolute; left: 0; right: 0; top: 0; z-index: 99;">
+					<label >创建信件</label>
+					<a class="email_list"  href="creat-email.html#page-createEmail">
+						<img src="assets/img/email_write.png" style="width: 20px;"/>
+					</a>
+				</div>
+				<div class="pull-to-refresh-content infinite-scroll" style="margin-top: 50px;" data-ptr-distance="50">
+					<!--下拉刷新-->
+					<div>
+						<div class="pull-to-refresh-layer" style="z-index: 90;">
+						    <div class="preloader"></div>
+						    <div class="pull-to-refresh-arrow"></div>
+						</div>
+						<ul class="list-block email-list">
+							<div class="email_title"><img class="email_avar" src="assets/img/email_question.png"/><span class="email_question">院长答复</span></div>
+							<li v-on:click="md5code(item.MD5CODE)" v-for="item in mailboxList"   class="swipeout">
+							  <div class="swipeout-content">	
+							        <div class="email-item-title" style="width: 100%;">{{item.MAIL_CONTENT}}</div>		 					   
+							  </div>
+							  <div class="swipeout-actions-right">
+							    <!-- delete with confirm -->
+							    <a class="bg-danger swipeout-close" @click="delete(item)" >删除</a>
+							  </div>
+						   </li>
+						</ul>
+				    </div>
+					<!--下拉加载-->
+					<div class="infinite-scroll-preloader"></div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

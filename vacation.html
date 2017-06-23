@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>请假申请</title>
+		<meta charset="utf-8" />
+	</head>
+
+	<body>
+		<div class="page" id="page-vacation">
+			<!-- 标题栏 -->
+			<v-bar title="请假">
+				<a class="icon icon-left pull-left back no-transition" slot="left"></a>
+			</v-bar>
+			<div class="content vacation-content">
+				<div id="form-vacation">
+					<ul class="vacation-list" style="margin-top:0px;">
+						<li>
+							<label>申&nbsp;请&nbsp;&nbsp;人:</label>
+							<input id="vacatename" readonly="readonly" type="text" value="" />
+
+						</li>
+
+						<li>
+							<label>请假类别:</label>
+								<input id="vacat-t" type="text" data-type="" readonly="readonly" placeholder="请选择请假类别" />
+							
+							<div class="clear-float" style="clear: both;"></div>
+							<div id="vacation-cho">
+								<ul class="vacation-type">
+									<li v-for="item in vacatetype">
+										<a data-type="{{item.enum_ID}}">{{item.item_VALUE}}</a>
+									</li>
+								</ul>
+							</div>
+						</li>
+						<li>
+							<label>开始时间:</label>
+							<input type="text" id="startime" />
+						</li>
+						<li>
+							<label>结束时间:</label>
+							<input type="text" id="endtime" />
+						</li>
+						<li>
+							<label>请假原因:</label>
+							<!--<textarea id="reason" placeholder="请填写请假原因..." style="resize: none;width: 300px;height:4.5rem;background: #EEEEEE;border-radius: 5px 5px 0px 0px;margin-left: 20px;"></textarea>-->
+							<div class="reason-wrapper" style="width: 300px; background-color: #EEEEEE; border-radius:5px;margin-left: 20px;position: relative; padding-right: 40px;">
+								<textarea id="reason" name="" rows="" cols="" style="width:100%; height: 4.5rem; background-color: transparent; resize: none;"></textarea>
+								<span id="vacation-upload" class="repairadd icon icon-picture" style="position: absolute;right: 10px; top: 2.5rem;"></span>
+								<ul class="repair-pic">
+									<li v-for="value in uploadPics"><img v-on:click="removeThisPic($index)" id="public_cancel" class="icon-remove" src="assets/img/cancel.png" /><img class="repair-item" :src="value.picSrc" /></li>
+								</ul>
+							</div>
+						</li>
+
+					</ul>
+					<!--<div class="re-p">
+						<span id="vacation-upload" class="repairadd icon icon-picture" style="background-color: red;"></span>
+						<ul class="repair-pic">
+							<li v-for="value in uploadPics"><i class="icon icon-remove"></i><img class="repair-item" :src="value.picSrc" /></li>
+						</ul>
+					</div>-->
+					<div class="actperson">
+						<label>受&nbsp;&nbsp;理&nbsp;&nbsp;人:</label>
+			
+						<ul class="vacat-choose clearfix">					
+							<li  v-on:click="vacatherf()" >				
+								<div class="vacate-bg"></div>
+							</li>
+						</ul>
+
+					</div>
+					<div class="va-sub">
+						<a class="sub confirm-ok">提交申请</a>
+					</div>
+				</div>
+			
+			</div>
+            <div id="page-vacation-selectTeacher" class="custom-dialog" hidden="hidden">
+				<div class="custom-dialog-layer">
+			
+				<div class="custom-dialog-content">
+					<div style="background: #00C79F;text-align: center;height: 60px;line-height: 65px;">
+						<a id="choosecancel" style="float: left; margin-left: 20px;" class="icon icon-left"></a>
+						<span style="color: #FFFFFF;">选择联系人</span>
+					</div>
+					<div class="choose-search">
+						<input type="text" placeholder="搜索" v-model="name" />
+					</div>
+					<div class="choose-list">
+						<ul>
+							<li class="clearfix" v-on:click="chooseherf(user.NAME,user.USER_ID,$index)" v-for="user in actList | filterBy name in 'NAME'">
+								<div class="choose-headimg">
+									<span style="color: #FFFFFF;">{{user.NAME.substring(0,1)}}</span>
+								</div>
+								<div class="choose-p">
+									<label>{{user.NAME}}</label>
+									<span>教职工</span>
+								</div>
+							</li>
+							
+						</ul>
+					</div>
+			    </div>
+			</div>	
+		</div>
+		</div>
+			
+	</body>
+	<script>
+		
+	</script>
+
+</html>

@@ -1,0 +1,76 @@
+<!--
+页面：首页
+说明：程序入口页面
+创建/修改：左武洲
+时间：2016/5/31
+-->
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>首页</title>
+	</head>
+
+	<body>
+		<!--一幼圈首页-->
+		<div class="page bg-white" id="circles-index">
+			<v-bar title="我的幼儿园" :istab="true" tab1title="校园" tab2title="活动">
+				<a class="icon icon-left pull-left  no-transition" slot="left" href="#login-index"></a>				
+			</v-bar>
+			<v-nav></v-nav>
+			<div class="tabs">
+				<!--校园圈-->
+					<div id="tab1" class="tab active content infinite-scroll pull-to-refresh-content" data-distance="100" data-ptr-distance="100">
+						<!--下拉提示-->
+						<div class="pull-to-refresh-layer">
+							<div class="preloader"></div>
+							<div class="pull-to-refresh-arrow"></div>
+						</div>
+						<!--轮播图-->
+						<div class="swiper-container" data-space-between='0' data-autoplay="10000">
+							<div class="swiper-wrapper">
+								<div class="swiper-slide"><img src="./assets/img/banner/banner1.jpg" alt=""></div>
+								<div class="swiper-slide"><img src="./assets/img/banner/banner2.png" alt=""></div>
+							</div>
+						</div>
+						<!--校园风光、集团介绍-->
+						<div class="row no-gutter">
+							<div class="col-50">
+								<a href="#circles-introduction" class="button bt1 no-transition"><img src="assets/img/yyin.png"><span>院所介绍</span></a>
+							</div>
+							<div class="col-50">
+								<a href="#yy-surroundings" class="button bt2 no-transition"><img src="assets/img/yyschool.png"><span>幼儿园介绍</span></a>
+							</div>
+						</div>
+						<!--校园圈-->
+						<ul class="sc-content" style="margin-top: 1px;">
+							<li class="sc-item" v-for="item in items" track-by="$index">
+								 <img src="assets/img/headimg.png" />
+								    <div class="sc-p">
+											<label>{{item.ANN_TITLE}}</label>
+											<i>{{item.ANN_DATE}}</i>							
+										    <span>{{item.ANN_CONTENT}}</span>		
+								   </div>
+							</li>
+						</ul>
+						<!--上拉加载提示-->
+						<div class="infinite-scroll-preloader">
+						</div>
+					</div>
+				<div id="tab2" class="tab infinite-scroll pull-to-refresh-content" data-ptr-distance="55" data-distance="100">
+					<!--下拉提示-->
+						<div class="pull-to-refresh-layer">
+							<div class="preloader"></div>
+							<div class="pull-to-refresh-arrow"></div>
+						</div>
+					 <div style="margin-top: 20px;margin-left: 20px;">功能正在开发敬请期待......</div>
+					<!--</div>-->
+					<!--preloader-->
+    				<div class="infinite-scroll-preloader">
+						<!--<div class="preloader"></div>-->
+					</div>	
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

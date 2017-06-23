@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>问卷回答</title>
+	</head>
+
+	<body>
+		<div class="page" id="qus-response">
+			<v-bar title="问卷调查详情">
+				<a class="icon icon-left pull-left back" slot="left"></a>
+			</v-bar>
+			<div class="content" style="">
+				<div class="content-wrapper" style="min-height: 100%; padding-bottom: 100px; background-color: #FFFFFF;">
+					<form id="form-qus-response">
+						<!--调查人-->
+						<input name="RECORD_PEOPLE_ID" hidden="hidden" value="{{userid}}" />
+						<input type="text" hidden="hidden" name="RESEARCH_ID" value="{{qusId}}" />
+						<!--多选-->
+						<div class="qus-item" v-if="option.qUESTION_TYPE == 1">
+							<div class="item-tilte">{{option.qUESTION_NUM}}.{{option.cONTENT}}</div>
+							<input type="text" hidden="hidden" id="QUESTION_ID1" value="{{option.qUESTION_ID}}" />
+							<ul>
+								<li v-for="item in option.optionList" style="margin: 15px 0;">
+									<label class="label-checkbox item-content" v-on:click="selectedThis($index, item.oPTION_ID, option.qUESTION_ID)">
+					                	<input type="checkbox" name="OPTION_ID" value="{{item.oPTION_ID}}" checked="{{ item.SELECTED  && item.SELECTED == item.oPTION_ID || item.iS_CHOSE == '1'}}">
+					                    <div class="item-media qus-item-select-option" style="display: flex;"><i class="icon icon-form-checkbox" style="display: inline-block; width: 22px;"></i><span style="display: inline-block; flex: 1; margin-left: 5px;">{{item.oPTION_CONTENT}}</span></div>
+					                </label>
+								</li>
+							</ul>
+						</div>
+						<!--单选-->
+						<div class="qus-item" v-if="option.qUESTION_TYPE == 0">
+							<div class="item-tilte">{{option.qUESTION_NUM}}.{{option.cONTENT}}</div>
+							<input type="text" hidden="hidden" id="QUESTION_ID1" value="{{option.qUESTION_ID}}" />
+							<ul>
+								<li v-for="item in option.optionList" style="margin: 15px 0;">
+									<label class="label-checkbox item-content" v-on:click="selectedThis($index, item.oPTION_ID, option.qUESTION_ID)">
+					                <input type="radio" name="OPTION_ID" value="{{item.oPTION_ID}}" checked="{{ item.SELECTED  && item.SELECTED == item.oPTION_ID || item.iS_CHOSE == '1'}}">
+					                    <div class="item-media qus-item-select-option" style="display: flex;"><i class="icon icon-form-checkbox" style="display: inline-block; width: 22px;"></i><span style="display: inline-block; flex: 1; margin-left: 5px;">{{item.oPTION_CONTENT}}</span></div>
+					                </label>
+								</li>
+							</ul>
+						</div>
+						<!--简答-->
+						<div class="qus-item" v-if="option.qUESTION_TYPE == 2">
+							<div class="item-tilte">{{option.qUESTION_NUM}}.{{option.cONTENT}}</div>
+							<input type="text" hidden="hidden" id="QUESTION_ID1" value="{{option.qUESTION_ID}}" />
+							<input type="text" hidden="hidden" class="iS_CHOICE" value="{{option.qUESTION_TYPE}}" />
+							<textarea v-if="option.rESEARCH_RESULT != null" class="qus-info-suggest" name="OPTION_ID" id="OPTION_ID">{{option.rESEARCH_RESULT}}</textarea>
+							<textarea v-else class="qus-info-suggest" name="OPTION_ID" id="OPTION_ID" placeholder="内容不超过200字"></textarea>
+						</div>
+					</form>
+				</div>
+				<div class="" style="background-color: blueviolet; margin-top: -70px;">
+					<div class="qus-btn-box">
+						<template v-if="tag == 1 && submitBtn != '0'">
+							<div id="qus-survey-commit" class="qus-get-checkCode pull-left" style="width: 100%;" @click="surveyCommit()">提交</div>
+						</template>
+						<template v-if="tag == 2">
+							<div id="qus-survey-next" class="qus-get-checkCode pull-left" style="width: 100%;" @click="surveyNext()">下一题({{option.qUESTION_NUM}}/{{outNum}})</div>
+						</template>
+						<template v-if="tag == 3">
+							<div id="qus-survey-last" class="qus-get-checkCode pull-left" style="width: 48%;" @click="surveyLast(0)">上一题({{option.qUESTION_NUM}}/{{outNum}})</div>
+							<div id="qus-survey-next" class="qus-get-checkCode pull-left" style="width: 48%; margin-left: 3%;" @click="surveyNext()">下一题({{option.qUESTION_NUM}}/{{outNum}})</div>
+						</template>
+						<template v-if="tag == 4 && submitBtn != '0'">
+							<div id="qus-survey-last" class="qus-get-checkCode pull-left" style="width: 48%;" @click="surveyLast(1)">上一题({{option.qUESTION_NUM}}/{{outNum}})</div>
+							<div id="qus-survey-commit" class="qus-get-checkCode pull-left" style="width: 48%; margin-left: 3%;" @click="surveyCommit()">提交</div>
+						</template>
+						<template v-if="tag == 4 && submitBtn == '0'">
+							<div id="qus-survey-last" class="qus-get-checkCode pull-left" style="width: 100%;" @click="surveyLast(1)">上一题({{option.qUESTION_NUM}}/{{outNum}})</div>
+						</template>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>

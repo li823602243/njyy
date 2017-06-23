@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>一幼圈详情</title>
+	</head>
+
+	<body>
+		<div class="page" id="yy-circle-detail">
+			<v-bar title="详情">
+				<a class="icon icon-left pull-left back no-transition" slot="left"></a>
+			</v-bar>
+			<div class="content">
+				<div class="card class-card-style">
+					<div class="card-header no-border">
+						<div class="class-card-hearder social-school-card-icon">
+							<img src="./assets/img/yyIntroduce.png" width="37" height="37" />
+						</div>
+						<div class="class-card-hearder social-school-card-title">
+							<div class="class-name-style">{{item.ANN_TITLE}}</div>
+							<div>{{item.ANN_DATE}}</div>
+						</div>
+						<div class="class-card-hearders">
+							<img id="{{item.ANN_ID}}" class="icon-collect" src="./assets/img/btn_heart_normal.png" />
+						</div>
+
+					</div>
+					<div class="card-content">
+						<div class="card-content-inner class-card-content">{{item.ANN_CONTENT}}</div>
+						<div id="yy-publicImg">
+							<img class="class-card-picture" src="http://192.168.24.243:8080/FHORACLE3/uploadFiles/uploadImgs/{{item.PATH}}" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>

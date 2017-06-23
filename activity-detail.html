@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<!--
+	作者：wangshujing@jsruiyin.com
+	时间：2016-06-03
+	描述：活动详情
+-->
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>一幼圈</title>
+	</head>
+
+	<body>
+		<div class="page" id="active-detail">
+			<v-bar title="活动详情">
+				<!--<a class="icon icon-left pull-left back " slot="left" href="yy-public.html"></a>-->
+				<a class="icon icon-left pull-left back" slot="left"></a>
+			</v-bar>
+			<div class="content activity-detail-content" id="active-detail-content">
+				
+				<div class="active-picture">
+					<img id="active-picture" src="./assets/img/banner6.png" />
+				</div>
+				<div class="active-detail-title">{{items.act_TITLE}}</div>
+				<div class="active-detail-message">
+					<div class="active-detail-time active-detail-text-color"><span class="active-key">时间:</span>6月2日上午9：00-下午16：00</div>
+					<div class="active-detail-address active-detail-text-color"><span class="active-key">地址:</span>{{items.place}}</div>
+				</div>
+				<div class="active-detail-address active-detail-text-color">
+					<div class="active-detail-title">———— 活动详情 ————</div>
+					<div class="active-detail-content">{{items.act_CONTENT}}</div>
+				</div>
+				<div class="active-detail-address active-left-red-border">
+					<div class="active-detail-title active-to-know-font">报名须知</div>
+					<div class="active-detail-text-color">
+						{{items.notice}}
+					</div>
+				</div>
+				<div class="active-detail-address active-left-blue-border">
+					<div class="active-detail-title active-to-know-font">咨询热线</div>
+					<div class="active-detail-text-color">{{items.tel}}</div>
+				</div>
+				<div id="{{item.act_ID}}" class="activity-btn-apply apply-activity activity-detail-apply" @click="activityApply()">立即报名</div>
+				
+			</div>
+
+		</div>
+
+	
+	</body>
+</html>

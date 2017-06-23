@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>一幼圈</title>
+	</head>
+
+	<body>
+		<div class="page" id="notice-detail">
+			<v-bar title="公告详情">			
+				<a class="icon icon-left pull-left back no-transition" slot="left"></a>
+	        </v-bar>
+			<div class="content">
+				<div class="noticedetail-tab" style="">
+		             <div class="content-title" style="padding: 10px 15px;"><span>{{pp.no_TITLE}}</span></div>
+		             <div class="" style="width: 100%; padding-right: 5px; background-color: #34e2c3; color: darkgray; font-size: 14px;"><span style="display: inline-block; text-align: right; width: 100%; background-color: #FFFFFF;">{{getTimeTip(pp.no_DATE)}}</span></div>
+		             <div v-if="pp.file_PATH != null" class="" style="padding: 5px auto;"><img style="width: 80%; height: 100%; margin: 0 auto;" src="{{imgPath + pp.file_PATH}}" alt="" /></div>
+		             <div class="content-page" style="">{{{pp.no_CONTENT}}}</div>
+		        </div>
+		    </div>
+		</div>
+	</body>
+</html>

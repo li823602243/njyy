@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    <title>请假管理</title>
+    <meta charset="utf-8" />
+</head>
+
+<body>
+  <div class="page" id="page-vacation-information">
+  <!-- 标题栏 -->
+        <v-bar title="请假申请详情">
+           <a class="icon icon-left pull-left back no-transition" slot="left"></a>
+        </v-bar>
+	    <div class="content" v-cloak>
+				<ul class="vacation-information-list" >
+					<li >
+						<label>申&nbsp;请&nbsp;&nbsp;人:</label>
+						 <span>{{vacation.clientVacateDTO.vacate_PERSON_NAME}}</span>
+					</li>
+					
+					<li>
+						<label>请假类型:</label>
+						  <span>{{vacation.clientVacateDTO.item_VALUE}}</span>
+					</li>
+					<li>
+						<label>开始时间:</label>
+						<span>{{vacation.clientVacateDTO.start_TIME}}</span>
+					</li>
+					<li>
+						<label>结束时间:</label>
+						<span>{{vacation.clientVacateDTO.end_TIME}}</span>
+					</li>
+					<li>
+						<label>申请日期:</label>
+						<span>{{new Date(vacation.clientVacateDTO.create_TIME).toLocaleDateString()}}</span>
+					</li>
+					<li>
+						<label>请假原因:</label>
+						  <div class="repairinforimg">
+						  	<p>{{vacation.clientVacateDTO.vacate_REASON}}</p>
+						  	<ul>
+						  		<li v-for="item in getImagePath(vacation.clientVacateDTO.path)">
+						  			<!--<img src="{{item}}" />-->
+						  			<!--<img v-on:click="enlargePic(item)" :src="nigx+item" />-->
+						  			<a href="{{nigx+item}}" data-lightbox="sss">
+										<img class="yy-circle-item-image" src="{{nigx+item}}" data-src="{{nigx+item}}" />
+									</a>
+						  		</li>
+						  	</ul>
+					  		<!--<div v-show="bigPic" v-on:click="hiddenBigPic()" class="icain-mark-layer" transition="mark"></div>
+					  		<img v-show="bigPic" class="icain-bigPic-layer" transition="bigPic" :src="nigx+bigPicSrc" alt="大图" />-->
+						  	<div class="clearfix"></div>
+						  </div>
+						
+					</li>
+					<li v-show="flowact==2||flowact==6||flowact==3">
+						<label>详细原因:</label>
+						<span>{{remark}}</span>
+					</li>
+				</ul>
+			<div v-if="flag==0"  class="repairprolist vaprolist">	
+			<h4>审批操作节点</h4>
+		 	<ul >
+		 		<li v-for="item in flowList">
+		 			<div class="bg-repair1"></div>
+		 			<span>{{item.ITEM_VALUE}}</span>
+		 			<span style="font-size: 12px; display: block; width: 100%; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">{{item.NAME}}</span>
+		 		</li>
+		 		
+		 	</ul>
+		 	
+		 </div>	
+			  <div v-show="flag==1&&flowact!=5" class="repairactbtn" style="margin-bottom: 15px;">
+			 	<span  v-on:click="passbtn()">通过</span>
+			 	<span id="rebut" >驳回</span>
+			  </div>
+	    
+			<div style="display: none; margin-bottom: 15px;" v-on:click="cancleMd5(vacation.clientVacateDTO.start_TIME)" class="canclevat">
+				<a >销假</a>
+			</div>
+			<div v-if="(flowact==2||flowact==6)&&flag==0" style="display: none;margin-bottom: 15px;" v-on:click="agree()" class="agreebtn">
+				<a >同意</a>
+			</div>
+			<!--驳回弹框-->
+				<div class="custom-dialog" hidden="hidden">
+				<div class="custom-dialog-layer">
+					<div class="custom-dialog-box">
+						<div class="custom-dialog-txt">
+							<textarea id="comment" name="comment" placeholder="输入驳回理由..."></textarea>
+						</div>
+						<div class="buttons">
+							<div class="button-box left-button">
+								<a class="dialog-button cancel" id="dialog-button-cancel">取消</a>
+							</div>
+							<div class="button-box ">
+								<a class="dialog-button ok" id="dialog-ok">提交</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+	    </div>
+  </div>
+</body>
+</html>
+

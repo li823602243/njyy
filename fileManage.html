@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>文件管理</title>
+	</head>
+	<body>
+		<!--
+        	作者：左武洲
+        	时间：2016-07-05
+        	描述：文件管理页面
+        -->
+		<div class="page" id="page-fileManage">
+			<v-bar title="文件资源">
+				<a class="pull-left icon icon-left back no-transition" slot="left"></a>
+			</v-bar>
+			<div class="content">
+				<div class="file-manage-tab-bar-container bg-white" style="box-shadow: 0 3px 20px #CCCCCC;">
+					<ul class="file-manage-tab-bar">
+						<li class="study-tab-bar active-tab-bar">学术资源</li>
+						<li class="school-tab-bar">学校资料</li>
+						<li class="rule-tab-bar">校园规定</li>
+						<li class="discipline-tab-bar">学校纪律</li>
+					</ul>
+				</div>
+				<div class="file-manage-list-container content" style="position: fixed; top: 70px; bottom: 0; overflow: hidden;">
+					<div class="list-tab infinite-scroll pull-to-refresh-content list-active" data-category="1" data-ptr-distance="55" data-distance="100">
+						  <div class="pull-to-refresh-layer">
+						    <div class="preloader"></div>
+						    <div class="pull-to-refresh-arrow"></div>
+						  </div>
+						<ul>
+							<file-item v-for="item in studyList" :item="item" track-by="FILE_ID"></file-item>
+						</ul>
+					    <div class="infinite-scroll-preloader">
+					    </div>
+					</div>
+					<div class="list-tab infinite-scroll pull-to-refresh-content" data-category="2" data-ptr-distance="55" data-distance="100">
+						 <div class="pull-to-refresh-layer">
+						    <div class="preloader"></div>
+						    <div class="pull-to-refresh-arrow"></div>
+						  </div>
+						<ul>
+							<file-item v-for="item in schoolList" :item="item" track-by="FILE_ID"></file-item>
+						</ul>
+					    <div class="infinite-scroll-preloader">
+					    </div>
+					</div>
+					<div class="list-tab infinite-scroll pull-to-refresh-content" data-category="3" data-ptr-distance="55" data-distance="100">
+						 <div class="pull-to-refresh-layer">
+						    <div class="preloader"></div>
+						    <div class="pull-to-refresh-arrow"></div>
+						  </div>
+						<ul>
+							<file-item v-for="item in ruleList" :item="item" track-by="FILE_ID"></file-item>
+						</ul>
+					    <div class="infinite-scroll-preloader">
+					    </div>
+					</div>
+					<div class="list-tab infinite-scroll pull-to-refresh-content" data-category="4" data-ptr-distance="55" data-distance="100"> 
+						 <div class="pull-to-refresh-layer">
+						    <div class="preloader"></div>
+						    <div class="pull-to-refresh-arrow"></div>
+						  </div>
+						<ul class="list-tab">
+							<file-item v-for="item in disciplineList" :item="item" track-by="FILE_ID"></file-item>
+						</ul>
+					    <div class="infinite-scroll-preloader">				
+					    </div>
+					</div>
+				</div>
+			</div>
+			<template id="fileListItem">
+				<li id="{{item.FILE_ID}}" @click="download(item.NAME,item.PATH,item.FILE_ID)">
+					<h5 class="file-title" style="margin-bottom: 0; height: auto !important; overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical; min-height: 40px;">{{item.NAME}}</h5>
+					<span class="file-size fl">{{item.FILE_SIZE}}</span>
+					<div class="file-progress-container fl" style="display: none;">
+						<div class="file-progress-bar"></div>
+					<!--	<span class="icon icon-remove file-manage-cancel" @click="cancel"></span>-->
+					</div>
+					<span class="file-time fr">{{item.RELEASETIME}}</span>
+				</li>
+			</template>
+		</div>
+	</body>
+</html>

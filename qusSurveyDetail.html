@@ -1,0 +1,38 @@
+<!--
+	作者：wangshujing@jsruiyin.com
+	时间：2016-07-08
+	描述：问卷调查详情
+-->
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>问卷调查详情</title>
+	</head>
+
+	<body>
+		<div class="page" id="qus-survey-detail" style="position: relative;">
+			<v-bar title="调查说明">
+				<a class="icon icon-left pull-left back" slot="left"></a>
+			</v-bar>
+			<div style="position: absolute; top: 34px; bottom: 20px; left: 0; right: 0; overflow: scroll;">
+				<div class="icain-content-wrapper" style="padding-bottom: 70px !important; margin-top: -20px !important; min-height: 100%;">
+					<div class="qus-detail-title" style="padding: 29px 15px 0;">{{item.RESEARCH_TITLE}}</div>
+					<div class="qus-detail-publish-date" style="margin-right: 20px;">{{item.CREAT_DATE}}</div>
+					<div class="qus-detail-content">
+						<img src="assets/img/banner/banner.png" />
+						<p style="word-break: break-all; padding: 15px; background-color: #FFFFFF; border-radius: 7px; margin: 15px;">{{{item.RESEARCH_DESC}}}</p>
+						<p style="padding: 0 15px; margin-left: 15px;">声明：{{item.STATEMENT}}</p>
+					</div>
+					<div class="qus-datail-useful-date" style="margin-right: 20px;">有效期:{{item.START_TIME}}至{{item.END_TIME}}止</div>
+				</div>
+				<div id="begin-qus-survey" v-if="startBtn" style="background-color: #00c79f; width: 50%; color: #FFFFFF !important; text-align: center !important; border-radius: 5px !important; height: 40px; line-height: 40px !important; margin-left: 25% !important; margin-top: -60px !important;">{{btnText}}</div>
+			</div>
+			<!--<div style="margin-top: 0;">
+				<div id="begin-qus-survey" class="btn-current-phonenum">开始问卷调查</div>
+			</div>-->
+		</div>
+	</body>
+
+</html>

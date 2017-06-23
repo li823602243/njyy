@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>班级</title>
+	</head>
+	<body>
+			<div class="page" id="page-myclass" >
+				<v-bar title="班级">
+					<a class="icon icon-left pull-left back no-transition" slot="left"></a>
+				</v-bar>
+			
+				<div class="content myclass" >
+			        	<div class="swiper-container swiper-container-device-main">
+					        <div class="swiper-wrapper ">
+					        	<!--<div class="swiper-slide"><img src="assets/img/main/banner.png"/></div>-->
+					        	<div class="swiper-slide"><img src="assets/img/banner6.png"/></div>
+					        	<div class="swiper-slide"><img src="assets/img/banner7.png"/></div>
+					            <div class="swiper-slide"><img src="assets/img/banner1.jpg"/></div>
+					            <div class="swiper-slide"><img src="assets/img/banner2.png"/></div>
+					            <div class="swiper-slide"><img src="assets/img/banner3.png"/></div>
+					            <div class="swiper-slide"><img src="assets/img/banner4.png"/></div>
+					        </div>
+		 	      		</div>
+		 	      	
+		 	      	 <ul class="myclass-content clearfix">		 	
+		 	      			 	<li v-on:click="callherf()" class="mw-r8">
+		 	      			 		<a>点名</a>
+		 	      			 		<!--<i>1</i>-->
+		 	      			 	</li>
+		 	      			 	<li  class="mw-r6" v-on:click="vacateList()"> 	      			 		
+		 	      			 		<a>学生请假</a>
+		 	      			 		<!--<i>1</i>-->
+		 	      			 	</li>
+		 	      			 	<li  class="mw-r4"> 	      			 		
+		 	      			 		<a>更多</a>
+		 	      			 		<!--<i>1</i>-->
+		 	      			 	</li>
+		 	      			 
+		 	      	 </ul>
+		 	    	 
+		        </div>
+	   		</div>
+	</body>
+</html>

@@ -1,0 +1,53 @@
+<!--
+	作者：wangshujing@jsruiyin.com
+	时间：2016-06-17
+	描述：用户登录
+-->
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>登录界面</title>
+	</head>
+
+	<body>
+		<div class="page login-index-background" style="top:0;" id="login-login">
+			<div class="login-header">
+                <a class="back no-transition">
+                	<img src="assets/img/banner/left.png" class="login-left" style="margin-top: 15px;"/>
+                </a>
+				<img src="assets/img/login/logo.png"/>
+			</div>
+			<div class="content login-content">
+
+				<div class="login-login-input-box">
+					<form id="form-login">
+						<div style="line-height: 40px;height: 40px;" class="login-phonenum-input-box">
+							<img src="assets/img/login/user.png" />
+							<input style="line-height: 20px;height: 40px;" type="text" name="USERNAME" id="username" placeholder="请输入手机号码" pattern="^1[3-8][0-9]{9}$" required="required"/>
+						</div>
+						<div style="line-height: 40px;height: 40px;" class="login-phonenum-input-box">
+							<img src="assets/img/login/password.png" />
+							<input style="line-height: 20px;height: 40px;" type="password" name="PASSWORD" id="password" placeholder="请输入密码" />
+						</div>
+					</form>
+					<div class="login-show-password-checkbox">
+
+						<label style="float: right;" class="label-switch">
+	                		<input id="show-password-checkbox" type="checkbox" class="show-password-checkbox">
+	                		<div class="checkbox"></div>
+              			</label>
+						<div id="show-password-text" class="login-show-password">显示密码</div>
+					</div>
+					<div id="btn-login" class="login-button-box">
+						<div class="login-button-right">登录</div>
+					</div>
+					<!--<a href="login-retrieve-password.html" class="login-forget-password no-transition">忘记密码？</a>-->
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>

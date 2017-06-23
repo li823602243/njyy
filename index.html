@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title>首页</title>
+		<!--框架样式-->
+		<link rel="stylesheet" type="text/css" href="./assets/css/light7.min.css">
+		<!--轮播组件样式-->
+		<link rel="stylesheet" href="./libs/swiper/swiper-3.4.2.min.css" />
+		<!--<link rel="stylesheet" type="text/css" href="./libs/swiper/light7-swiper.min.css" />-->
+		<!--<link rel="stylesheet" type="text/css" href="./libs/swiper/style.css"/>-->
+		<!--手势滑动插件-->
+		<link rel="stylesheet" type="text/css" href="libs/swipeout/light7-swipeout.css" />
+		<!--字体图标-->
+		<link rel="stylesheet" href="libs/ion/css/ionicons.min.css" />
+		<!--自定义样式-->
+			<link rel="stylesheet" href="assets/css/zCalendar.css" />
+		<link rel="stylesheet" type="text/css" href="./assets/css/main.css">
+		<link rel="stylesheet" type="text/css" href="libs/lightbox/lightbox.min.css" />
+	
+	</head>
+
+	<body>
+		<!--登录首页-->
+		<div class="page page-current login-index-background" style="top:0;" id="login-index">
+			<div class="content ">		
+				<div class="login-header">
+					<img src="assets/img/login/logo.png"/>
+				</div>
+				<div class="login-index-buttons" style="text-align: center;">
+					
+						<div id="loginIndexBtn" class="lgcontent" style="top: 29px;">
+						     <img src="assets/img/login/userimg.png"  />
+						     <div class="lgtext" >
+							     <span>登&nbsp;&nbsp;录</span>
+							     <span class="entertext" >Login</span>
+						     </div>
+						</div>
+						<!--<div id="loginlook" class="lgcontent">
+						    <div class="lgtext" >
+						       <span >我要了解</span>
+						        <span class="entertext" >Learn more</span>
+						    </div>
+						 </div>-->
+				
+					
+			    </div>
+
+		
+		<!--我的应用-->
+		<div class="page" id="page-main">
+			<v-bar title="我的应用">
+			</v-bar>
+			<v-nav></v-nav>
+			<div class="content" style="margin-top: -10px; padding-bottom: 129px; height: 100%; overflow-y: scroll;">
+				<div id="app-swiper-container" class="swiper-container">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide"><img src="assets/img/banner/banner1.jpg" style="width: 100%; height: 170px;"/></div>
+						<div class="swiper-slide"><img src="assets/img/banner/banner2.png" style="width: 100%; height: 170px;"/></div>
+						<div class="swiper-slide"><img src="assets/img/banner/1.png" style="width: 100%; height: 170px;"/></div>
+					</div>
+				</div>
+				
+	         <div class="row  no-gutter main-row">
+	          <div class="col-33"><a href="notice.html" class="no-transition"><img src="assets/img/main/notice.png"/></a></div>
+		       <div class="col-33">
+		      	<a href="mobile-working.html" v-if="greeting" class="no-transition"><img src="assets/img/main/mw.png"/></a>
+		      	<a href="vacationStudent.html" v-else class="no-transition"><img src="assets/img/main/studentva.png"/></a>
+		      	
+		      </div> 
+		      <div class="col-33">
+		      	<a href="fileManage.html" v-if="greeting" class="no-transition"><img src="assets/img/main/file.png"/></a>
+		      	<!--<a href="myclass.html" v-if="greeting" class="no-transition"><img src="assets/img/main/myClass.png"/></a> -->
+		      	<a href="page-canteen.html" v-else class="no-transition"><img src="assets/img/main/food.png"/></a>
+		       </div>
+	         </div>
+		    <div class="row  no-gutter main-row">
+		    	<div class="col-33">
+		    	<a href="menology.html" v-if="greeting" class="no-transition"><img src="assets/img/main/Document.png"/></a>
+		      	<a href="schoolTimetable.html" v-else class="no-transition"><img src="assets/img/main/actity.png"/></a>
+		      	
+		      	
+		       </div>
+		      <div class="col-66" id="helloMain"><img src="assets/img/main/helloMain.png"/>
+		      <div  id="secondMain">
+		      	<div style="width: 100%;height: 100%;background-color: transparent;position: absolute;z-index: 100;"></div>
+		      	<span>hello!{{loginName}}<br /> <iframe name="weather_inc" src="http://i.tianqi.com/index.php?c=code&id=11" width="500" height="15" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" ></iframe></span>
+              </div>
+		      </div>
+		    </div>
+		    <div class="row  no-gutter main-row">		    	
+		       <div class="col-33">
+		      <a href="questionnaireSurvey.html" v-if="greeting" class="no-transition"><img src="assets/img/main/question_2.png"></a>
+		      	<!--<a href="menology.html" v-if="greeting" class="no-transition"><img src="assets/img/main/Document.png"/></a>-->
+		      	<a href="expertAnswer.html" v-else class="no-transition"><img src="assets/img/main/ex.png"></a>
+		      </div>
+		      
+		      <div class="col-33">
+		      	<a href="voteList.html" v-if="greeting" class="no-transition"><img src="assets/img/main/vote.png"/></a>
+		      	<a href="questionnaireSurvey.html" v-else class="no-transition"><img src="assets/img/main/question.png"></a>
+		      	
+		      </div>
+		      <div class="col-33">
+		      	<a v-on:click="waitting()" v-if="greeting" class="no-transition"><img src="assets/img/main/more.png"/></a>
+		      	
+		      	<a href="email.html" v-else class="no-transition"><img src="assets/img/main/mail.png"></a>	
+
+		      </div>
+		    </div>
+		     <div class="oval-pop"></div>
+		</div>
+		
+	</div>
+		<!--我的主页面-->
+		<div class="page" id="mine-index">
+			<v-bar title="我的">
+				<a class="icon pull-left back" slot="left" style="margin-top: .8rem;"></a>
+			</v-bar>
+			<v-nav v-if="role == 1 || role == 2"></v-nav>
+			<v-public v-else></v-public>
+			<div class="content activity-detail-content">
+				<img v-if='headimg==undefined||headimg=="null"' id="mineIndexBg" class="mine-index-header-bg blur" src="assets/img/faces/circles/T.png"/>
+				<img v-else :src="nginx+headimg"  id="mineIndexBg" class="mine-index-header-bg blur"/>
+				<div class="mine-index-header-box">
+					<div class="mine-main-info">
+						<img v-if='headimg==undefined||headimg=="null"' class="mine-favicon" src="assets/img/faces/circles/T.png" id="mineUserImg"/>
+						<img v-else id="mineUserImg" class="mine-favicon" :src="nginx+headimg" />
+						<div id="userNameDiv">用户</div>
+						<div class="mine-name-input">
+						</div>
+					</div>
+				</div>
+					<ul id="mineMenuList" class=" mine-index-menu-list">
+				
+						<li data-href="#mine-my-children" v-show="role == 2" class="mine-index-menu-item mine-index-menu-style3" style="border-color: #76d3dc; background-image: url(assets/img/mine/icon_mine_arrow1.png);">
+							<div class="mine-index-icon icon-mine-children" style="background-color: #76d3dc;"></div>
+							<div class="mine-index-body">我的孩子</div>
+						</li>
+						<li data-href="page-student-vacation.html" v-show="role == 2" class="mine-index-menu-item mine-index-menu-style3">
+							<div class="mine-index-icon icon-mine-apply"></div>
+							<div class="mine-index-body">我的请假</div>
+						</li>
+						<!--<li data-href="mine-my-payroll.html" v-show="role == 1" class="mine-index-menu-item mine-index-menu-style2">
+							<div class="mine-index-icon icon-mine-document"></div>
+							<div class="mine-index-body">我的工资单</div>
+						</li>-->
+						<li data-href="mine-setting.html" v-if="role == 1 || role == 2" class="mine-index-menu-item mine-index-menu-style5">
+							<div class="mine-index-icon icon-mine-setting"></div>
+							<div class="mine-index-body">我的设置</div>
+						</li>
+						<li data-href="mine-setting-public.html" v-else class="mine-index-menu-item mine-index-menu-style5">
+							<div class="mine-index-icon icon-mine-setting"></div>
+							<div class="mine-index-body">我的设置</div>
+						</li>
+					</ul>
+			</div>
+
+		</div>
+			<!--校园风光-->
+		<div class="page" id="yy-surroundings">
+			<v-bar title="幼儿园环境">
+				<a class="icon icon-left pull-left no-transition" href="yy-circle.html" slot="left"></a>
+			</v-bar>
+			<div class="content">
+				<div class="surroundings-image-container">
+					<img src="assets/img/school/school1.jpg" class="surroundings-image"/>
+					<div class="surroundings-content-container surroundings-content-right">
+						<h4 class="surroundings-content-title">教室</h4>
+						<p class="surroundings-content-p">操场占地面积约500平米，广场四周绿化，孩子更广阔的活动空间。</p>
+					</div>
+				</div>
+				<div class="surroundings-image-container">
+					<img src="assets/img/school/school2.jpg" class="surroundingsright-image"/>
+					<div class="surroundings-content-container surroundings-content-left" style="border-color:#71b7ff;">
+						<h4 class="surroundings-content-title">操场</h4>
+						<p class="surroundings-content-p">操场占地面积约500平米，广场四周绿化，孩子更广阔的活动空间。</p>
+					</div>
+				</div>
+				<div class="surroundings-image-container">
+					<img src="assets/img/school/school3.jpg" class="surroundings-image"/>
+					<div class="surroundings-content-container surroundings-content-right" style="border-color:#b797ff;">
+						<h4 class="surroundings-content-title">绿化</h4>
+						<p class="surroundings-content-p">操场占地面积约500平米，广场四周绿化，孩子更广阔的活动空间。</p>
+					</div>
+				</div>
+				<div class="surroundings-image-container">
+					<img src="assets/img/school/school4.jpg" class="surroundingsright-image"/>
+					<div class="surroundings-content-container surroundings-content-left" style="border-color:#fb95f3;">
+						<h4 class="surroundings-content-title">园林</h4>
+						<p class="surroundings-content-p">操场占地面积约500平米，广场四周绿化，孩子更广阔的活动空间。</p>
+					</div>
+				</div>
+				<div class="surroundings-image-container">
+					<img src="assets/img/school/school3.jpg" class="surroundings-image"/>
+					<div class="surroundings-content-container surroundings-content-right" style="border-color:#fb9595;">
+						<h4 class="surroundings-content-title">人文</h4>
+						<p class="surroundings-content-p">操场占地面积约500平米，广场四周绿化，孩子更广阔的活动空间。</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--集团介绍-->
+		<div class="page" id="circles-introduction">
+			<v-bar title="幼儿园介绍">
+				<a class="icon icon-left pull-left no-transition" href="yy-circle.html" slot="left"></a>
+			</v-bar>
+			<div class="content">
+				<div class="introduction-header-container">
+					<div class="introduction-header">
+						<h4 class="introduction-header-title ">南京市第一幼儿园</h4>
+						<p class="introduction-header-content">南京市第一幼儿园是一所历史悠久有着深厚的教育文化积淀的教育办幼儿园。是江苏省示范性实验幼儿园和江苏省现代化幼儿园，是省、市级、区级教科研基地，南师大中美研究中心基地。</p>
+					</div>
+				</div>
+				<div style="margin-top:.75rem;">
+				<div class="introduction-item-container" style="border-radius: 10px 10px 0px 0px;">
+					<h4 class="introduction-item-title icon-introduction-text">学校概况</h4>
+					<p class="introduction-item-content">
+						创立于1949年，是南京建园最早、规模最大的一所教办全托兼日托幼儿园，（南京市第一幼儿园原是1890年时清朝最大的一个文正书院，清朝最末一个状元张謇任院长；1914年为江苏省南京中学，成为培育党政领导人的摇篮；1947年为儿童福利实验区（总部）；1949年9月1日创建为市委托儿所、市政府第一幼儿园，成为培育祖国花朵的摇篮；1956年更名为南京市第一幼儿园
+					</p>
+				</div>
+				<div class="introduction-item-container">
+					<h4 class="introduction-item-title icon-introduction-cup">优秀奖项</h4>
+					<ul class="introduction-honor-list" style="margin-bottom: 20px;">
+						<li class="introduction-honor-item">全国少年军校示范校</li>
+						<li class="introduction-honor-item">全国少年儿童平安行动示范校</li>
+						<li class="introduction-honor-item">省平安校园</li>
+						<li class="introduction-honor-item">省培养足球后备人才重点学校</li>
+						<li class="introduction-honor-item">省科技活动四星级先进集体</li>
+						<li class="introduction-honor-item">省绿色学校</li>
+						<li class="introduction-honor-item">省模范职工之家</li>
+						<li class="introduction-honor-item">市德育先进集体</li>
+						<li class="introduction-honor-item">市三八红旗先进集体</li>
+						<li class="introduction-honor-item">市优秀少先队集体（大队）</li>
+						<li class="introduction-honor-item">市小学艺术活动中心</li>
+						<li class="introduction-honor-item">市优秀绿化景观学校</li>
+					</ul>
+				</div>
+			
+			   </div>
+			</div>
+		</div>
+		<!--我的孩子-->
+		<div class="page" id="mine-my-children">
+			<v-bar title="我的孩子">
+				<a class="icon icon-left pull-left back no-transition" slot="left"></a>
+			</v-bar>
+			<div class="content">
+				<div class="list-block" style="margin-top: 3px;">
+					<ul>
+						<li class="item-content">
+							<div class="item-inner">
+								<div class="item-tilte label">孩子</div>
+								<div class="item-input" style="width: 70%;">
+									<input type="text" name="picker-name" id="picker-name" value="请选择孩子" />
+									<!--<select id="myChildrenPicker">
+										
+									</select>-->
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!--通讯录-->
+			<div class="page" id="page-roster">
+			<v-bar title="通讯录">
+			</v-bar>
+			<v-nav></v-nav>
+			<div class="content">
+				<!--<div class="icain-search-area">
+					<input v-model="search" class="icain-search-input" type="text" placeholder="请输入您要搜索的人..." />
+				</div>-->
+		<div class="icain-new-panel-group">
+			<div v-for="value in list" class="icain-panel-repeat-one">
+				<input id="selectone{{$index}}" class="icain-panel-repeat-one-title-input" type="checkbox" style="width: 0px;"/>
+				<div v-on:click="getInnerList(1, value.org_ID, value.org_NAME, undefined, undefined, $index, $event)" class="icain-panel-repeat-one-title">
+					<span class="icain-panel-repeat-one-title-pic" style="width: 22px; height: 22px; display: inline-block; margin: 7px 0 7px 7px; line-height: 1;">{{value.org_NAME.substring(0, 1)}}</span> {{value.org_NAME}}
+					<!--<span class="icain-panel-repeat-one-title-number">{{value.orgList.length}}</span>-->
+					<span class="icon right" v-bind:class="{ 'icon-right': value.org_state, 'ion-ios-cloud-download-outline': !value.org_state }"></span>
+					<span class="icon icon-down"></span>
+				</div>
+				<div v-for="item in value.orgList" class="icain-panel-repeat-two">
+					<input id="selecttwo{{$parent.$index}}of{{$index}}" class="icain-panel-repeat-two-title-input" type="checkbox" style="width: 0px;"/>
+					<div v-on:click="getInnerList(2, item.org_ID, value.org_NAME, undefined, $parent.$index, $index, $event)" class="icain-panel-repeat-two-title">
+						<span v-if="value.org_NAME == '总园'" class="icain-panel-repeat-two-title-pic" style="width: 22px; height: 22px; display: inline-block; margin: 7px 0 7px 10px; line-height: 1;">{{item.org_NAME.substring(3, 4)}}</span>
+						<span v-if="value.org_NAME == '分园'" class="icain-panel-repeat-two-title-pic" style="width: 22px; height: 22px; display: inline-block; margin: 7px 0 7px 10px; line-height: 1;">{{item.org_NAME.substring(0, 1)}}</span>
+						{{item.org_NAME}}
+						<span v-if="value.org_NAME == '总园'" class="icain-panel-repeat-two-title-number">{{item.teacherList.length}}</span>
+						<!--<span v-if="value.org_NAME == '分园'" class="icain-panel-repeat-two-title-number">{{item.orgList.length}}</span>-->
+						<!--<span class="icon fonts">点击获取列表</span>-->
+						<span class="icon right" v-bind:class="{ 'icon-right': item.org_state, 'ion-ios-cloud-download-outline': !item.org_state }"></span>
+						<span class="icon icon-down"></span>
+					</div>
+					<div v-if="value.org_NAME == '总园'" class="icain-panel-repeat-three">
+						<div v-for="teacher in item.teacherList" v-on:click="show(teacher)" class="icain-panel-repeat-three-list">
+							<img class="icain-panel-repeat-three-list-pic" :src="imgSrc+teacher.PATH" onerror="this.src='./assets/img/header.png'" style="border-radius: 50%;"/> {{teacher.TEACHER_NAME}}
+						</div>
+					</div>
+					<div v-else v-for="icain in item.orgList" class="icain-panel-repeat-four">
+						<input id="selectthree{{$parent.$parent.$index}}of{{$parent.$index}}of{{$index}}" class="icain-panel-repeat-four-title-input" type="checkbox" style="width: 0px;"/>
+						<div v-on:click="getInnerList(3, icain.org_ID, value.org_NAME, $parent.$parent.$index, $parent.$index, $index, $event)" class="icain-panel-repeat-four-title">
+							<span class="icain-panel-repeat-four-title-pic" style="width: 22px; height: 22px; display: inline-block; margin: 7px 0 7px 14px; line-height: 1;">{{icain.org_NAME.substring(8, 9)}}</span> {{icain.org_NAME}}
+							<span class="icain-panel-repeat-four-title-number">{{icain.teacherList.length}}</span>
+							<span class="icon right" v-bind:class="{ 'icon-right': icain.org_state, 'ion-ios-cloud-download-outline': !icain.org_state }"></span>
+							<span class="icon icon-down"></span>
+						</div>
+						<div class="icain-panel-repeat-three">
+							<div v-for="teacher in icain.teacherList" v-on:click="show(teacher)" class="icain-panel-repeat-three-list">
+								<img class="icain-panel-repeat-three-list-pic" :src="imgSrc+teacher.PATH" onerror="this.src='./assets/img/header.png'" style="border-radius: 50%;"/> {{teacher.TEACHER_NAME}}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div v-for="value in showTearchList" class="icain-panel-repeat-one">
+				<input type="checkbox" class="icain-panel-repeat-one-title-input"/>
+				<div class="icain-panel-repeat-one-title">
+					<span class="icain-panel-repeat-one-title-pic" style="width: 22px; height: 22px; display: inline-block; margin: 7px 0 7px 7px; line-height: 1;">{{value.className.substring(3, 4)}}</span> {{value.className}}
+					<span class="icon right icon-right"></span>
+					<span class="icon icon-down"></span>
+				</div>
+				<div class="icain-panel-repeat-two" style="box-shadow: 0 2px 1px #d9d9d9 inset;">
+					<div v-for="teacher in value.teacherList" v-on:click="show(teacher)" class="icain-panel-repeat-three-list">
+						<img class="icain-panel-repeat-three-list-pic" :src="imgSrc+teacher.PATH" onerror="this.src='./assets/img/header.png'" style="border-radius: 50%;"/> {{teacher.TEACHER_NAME}}
+					</div>
+				</div>
+			</div>
+			<div v-show="search!=''" class="icain-reault-wrapper">
+				<div class="icain-reault-title">{{searchTitle}}</div>
+				<div v-show="searchReslut.length>0" v-for="value in searchReslut" class="icain-reault-repeat">
+					<div class="header"><img src="./assets/img/header.png" onerror="this.src='./assets/img/header.png'" alt="用户头像"/></div>
+					<div class="info">
+						<div class="name">{{value.name}}</div>
+						<div class="duties">{{value.duties}}</div>
+					</div>
+				</div>
+				<div v-show="searchTitle.substring(0, 4) == '搜索到与'" class="icain-reault-repeat">
+					<div class="icain-reault-getmore">
+						{{searchReslutState}}
+					</div>
+				</div>
+			</div>
+		</div>
+		<div v-if="list.length<=0 && showTearchList.length<=0" @click="retry()" class="empty-list" style="position: fixed; width: 60%; height: 50px; line-height: 50px; text-align: center; top: 20%; left: 20%;">点击重新获取</div>
+		<div v-show="alert" @click="hide()" class="mark-layer" transition="mark"></div>
+		<div v-show="alert" class="alert-layer" transition="alert">
+			<img @click="hide()" class="alert-close" src="./assets/img/close.png" alt="">
+			<div class="alert-top">
+				<img class="alert-header" :src="imgSrc+userInfo.PATH" onerror="this.src='./assets/img/header.png'" alt="用户头像">
+				<div class="alert-name">{{userInfo.TEACHER_NAME}}</div>
+				<div class="alert-duties"></div>
+			</div>
+			<div class="alert-below">
+				<img @click="callphone(userInfo.TEACHER_PHONE)" class="alert-call" src="./assets/img/call.png" alt="">
+				<div class="alert-phone">{{userInfo.TEACHER_PHONE}}</div>
+				<div @click="send()" class="alert-send">发消息</div>
+			</div>
+		</div>
+			</div>
+		</div>
+		<!--关于-->
+		<div class="page" id="page-about">
+			<v-bar title="关于">
+				<a class="icon icon-left pull-left back no-transition" slot="left"></a>
+			</v-bar>
+			<div class="content">
+				<div class="about-app-container" style="padding-top: 40px;">
+					<img class="about-app-icon" src="assets/img/mine/app.png" />
+					<h4 class="about-app-name">南京一幼</h4>
+				</div>
+				 <div class="list-block">
+				    <ul>
+				      <li class="item-content">
+				        <div class="item-inner">
+				          <div class="item-title">版本号</div>
+				          <div class="item-after">V1.0</div>
+				        </div>
+				      </li>
+				    </ul>
+				  </div>
+			</div>
+		</div>
+		</div>
+		</div>
+	</body>
+	<!--框架js-->
+	<script type="text/javascript" src="./assets/js/jquery.min.js"></script>
+	<script type="text/javascript" src="./assets/js/light7.min.js"></script>
+	<!--<script src="libs/mui.min.js" type="text/javascript" charset="utf-8"></script>-->
+	<script type="text/javascript" src="./assets/js/vue.min.js"></script>
+	<script src="libs/vue-tap.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="assets/js/cn.min.js"></script>
+	<script type="text/javascript" src="assets/js/swiper.min.js"></script>
+	<script type="text/javascript" src="libs/lightbox/lightbox.min.js" ></script>
+	<script type="text/javascript" src="libs/md5/md5-min.js"></script>
+	<!-- 手势密码 -->
+	<script type="text/javascript" src="assets/js/H5lock.publish.js"></script>
+	<!--水平滑动组件-->
+	<script type="text/javascript" src="libs/swipeout/light7-swipeout.js"></script>
+	<!--轮播组件-->
+	<script src="libs/swiper/swiper-3.4.2.jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	<!--<script type="text/javascript" src="./libs/swiper/light7-swiper.min.js"></script>-->
+	<!--<script type="text/javascript" src="./libs/swiper/swipe.js"></script>-->
+	<!--自定义组件-->
+	<script type="text/javascript" src="./components/bar.js"></script>
+	<script type="text/javascript" src="./components/nav.js"></script>
+	<script type="text/javascript" src="components/messageItem.js"></script>
+    <!--app数据接口-->
+	<script type="text/javascript" src="assets/js/njyy-api.js"></script>
+	<script type="text/javascript" src="./data.js"></script>
+	<!--公共方法-->
+	<script src="assets/js/njyy-error-config.js" type="text/javascript" charset="utf-8"></script>
+	<script src="assets/js/utils.js"></script>
+	<script type="text/javascript" src="libs/hammer.min.js" ></script>
+	<script type="text/javascript" src="libs/fastclick.js" ></script>
+	<script type="text/javascript" src="assets/js/zCalendar.js" ></script>
+	<script type="text/javascript" src="assets/js/jsencrypt.min.js"></script>
+	<!--app页面逻辑-->
+	<script type="text/javascript" src="./app.js"></script>
+	<!--聊天-->
+	<script src="assets/js/expression-config.js" type="text/javascript" charset="utf-8"></script>
+	<!--<script src="assets/js/chat.js" type="text/javascript" charset="utf-8"></script>-->
+</html>

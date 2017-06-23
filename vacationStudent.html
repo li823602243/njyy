@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>请假申请</title>
+		<meta charset="utf-8" />
+	</head>
+
+	<body>
+		<div class="page" id="page-vacation-student">
+			<!-- 标题栏 -->
+			<v-bar title="请假">
+				<a class="icon icon-left pull-left no-transition" slot="left" href="#page-main"></a>
+			</v-bar>
+			<div class="content vacation-content">
+				<div id="form-vacation">
+					<ul class="vacation-list" style="margin-top:0px;">
+						<li style="display: flex;">
+							<label style="width: 100px;">申&nbsp;请&nbsp;&nbsp;人:</label>
+							<input style="flex: 1; margin-top: -1px;" id="vacatename" type="text" value="" readonly="readonly"/>
+
+						</li>
+
+						<li>
+							<div style="display: flex;">
+								<label style="width: 100px;">请假类别:</label>
+								<input style="flex: 1; margin-top: -4px;" id="vacat-t" type="text" data-type="" readonly="readonly" placeholder="请选择请假类别" />
+							</div>
+							<div class="clear-float" style="clear: both;"></div>
+							<div id="vacation-cho">
+								<ul class="vacation-type">
+									<li v-for="item in vacatetype">
+										<a data-type="{{item.enum_ID}}">{{item.item_VALUE}}</a>
+									</li>
+								</ul>
+							</div>
+						</li>
+						<li style="display: flex;">
+							<label style="width: 100px;">开始时间:</label>
+							<input style="flex: 1; margin-top: -1px;" type="text" id="startime" />
+						</li>
+						<li style="display: flex;">
+							<label style="width: 100px;">结束时间:</label>
+							<input style="flex: 1; margin-top: -1px;" type="text" id="endtime" />
+						</li>
+						<li>
+							<label>请假原因:</label>
+							<!--<textarea id="reason" placeholder="请填写请假原因..." style="resize: none;width: 300px;height:4.5rem;background: #EEEEEE;border-radius: 5px 5px 0px 0px;margin-left: 20px;"></textarea>-->
+							<div class="reason-wrapper" style="width: 300px; background-color: #EEEEEE; border-radius:5px;margin-left: 20px;position: relative; padding-right: 40px;">
+								<textarea id="reason" name="" rows="" cols="" style="width:100%; height: 4.5rem; background-color: transparent; resize: none;"></textarea>
+								<span id="vacation-upload" class="repairadd icon icon-picture" style="position: absolute;right: 10px; top: 2.5rem;"></span>
+								<ul class="repair-pic">
+									<li v-for="value in uploadPics"><img v-on:click="removeThisPic($index)" id="public_cancel" class="icon-remove" src="assets/img/cancel.png" /><img class="repair-item" :src="value.picSrc" /></li>
+									<!--<div id="vacation-upload" style="display: inline-block; width: 4rem;height: 4rem;border: 1px solid #999999;position: relative;margin: 0 10px;">
+										<span class="ion-ios-plus-empty" style="font-size: 7px;position: absolute;left: 50%;top: 50%;transform: translate3d(-50%, -50%, 0);color: #999999;"></span>
+									</div>-->
+								</ul>
+							</div>
+						</li>
+
+					</ul>
+					<!--<div class="re-p">
+						<span id="vacation-upload" class="repairadd icon icon-picture"></span>
+						<ul class="repair-pic">
+						</ul>
+					</div>-->
+					<div class="va-sub">
+						<a class="sub confirm-ok">提交申请</a>
+					</div>
+				</div>
+			
+			</div>
+		</div>
+			
+	</body>
+	<script>
+		
+	</script>
+
+</html>

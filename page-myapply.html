@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body> 
+		<div class="page" id="page-myapply">
+			<v-bar title="报修" :istab="true" tab1title="我的待办" tab2title="报修完成">
+				<a class="icon icon-left pull-left no-transition back" slot="left"></a>
+				<a class="icon pull-right no-transition"  slot="right" href="repair.html" id="pubCircleBtn" style="display: block;">
+					<img src="assets/img/yy-circleAdd.png" style="width: 1rem; height: 1rem;" />
+				</a>
+			</v-bar>
+
+        	<div id="icain-refresh" class="tabs" >
+		        	<div id="tab1" class="tab content active pull-to-refresh-content infinite-scroll" data-distance="100">
+		        		<!--下拉刷新-->
+						<div class="refresh-wrapper">
+							<div class="pull-to-refresh-layer" style="height: 2rem;">
+							    <div class="preloader"></div>
+							    <div class="pull-to-refresh-arrow"></div>
+							</div>
+				        	<ul class="list-repair" >
+				        		<li class="cc{{$index%5}}" v-on:click="repairMd5(item.MD5CODE)" v-for="item in repairList"  track-by="$index">
+				        		    <h3 >
+				        		    	<i style="color: #000000;" class="icon icon-message" ></i> {{item.CLASS_NAME}}
+				        		    </h3>
+				        		    <div class="clearfix" > 	
+				        		    <div class="repair" style="float: left;">
+				        		    	
+				        		     <label>报修人:</label>
+				        		     <span>{{item.PERSON_NAME}}</span>
+				        		     </div>
+				        		     <div class="" style="margin-left: 2rem;display: inline-block;" >
+				        		     <label>报修日期:</label>
+				        		       <span>{{item.REPAIR_DATE.substr(0,10)}}</span>
+				        		      </div>
+				        		    </div>  
+				        		       <div class="repair">
+				        		     <label>描述:</label>
+				        		       <span>{{item.REPAIR_REASON}}</span>
+				        		    </div>	
+				        		    <span class="hurrytip"v-if="urgcount(item.urgeCount)&&role==1003" >已被催促{{item.urgeCount}}次</span>
+				        		     <span class="hurrytip"v-if="urgcount(item.urgeCount)&&role!=1003" >已经催促{{item.urgeCount}}次</span>
+				        		</li>
+				        	 </ul>
+						</div>
+			        	 <!--preloader-->
+			        	 <div id="icain-tab1-loading-more" style="margin-bottom: 70px; text-align: center;"></div>
+			        </div>
+		        	<div id="tab2" style="" class="tab content pull-to-refresh-content infinite-scroll" data-distance="100">
+		        		<!--下拉刷新-->
+						<div class="pull-to-refresh-layer" style="height: 2rem;">
+						    <div class="preloader"></div>
+						    <div class="pull-to-refresh-arrow"></div>
+						</div>
+			        	 <ul class="list-repair" >
+			        		<li class="cc{{$index%5}}" v-on:click="finishMd5(item.MD5CODE)" v-for="item in repairfinishList"  track-by="$index">
+			        		    <h3 >
+			        		    	<i style="color: #000000;" class="icon icon-message" ></i> {{item.CLASS_NAME}}
+			        		    </h3>
+			        		    <div class="clearfix" > 	
+			        		    <div class="repair" style="float: left;">
+			        		    	
+			        		     <label>报修人:</label>
+			        		     <span>{{item.PERSON_NAME}}</span>
+			        		     </div>
+			        		     <div class="" style="margin-left: 2rem;display: inline-block;" >
+			        		     <label>报修日期:</label>
+			        		       <span>{{item.REPAIR_DATE.substr(0,10)}}</span>
+			        		      </div>
+			        		    </div>  
+			        		       <div class="repair">
+			        		     <label>描述:</label>
+			        		       <span>{{item.REPAIR_REASON}}</span>
+			        		    </div>	    
+			        		</li>
+			        	 </ul>
+		        		<!--preloader-->
+		        	    <div id="icain-tab2-loading-more" style="margin-bottom: 70px; text-align: center;"></div>
+		        	</div>
+	       		</div>
+
+			</div>	
+
+		
+	</body>
+</html>

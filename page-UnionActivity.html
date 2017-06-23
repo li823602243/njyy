@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<div class="page" id="unionActivity">
+			<v-bar title="工会活动">
+				<a class="icon icon-left pull-left  no-transition back" slot="left"></a>
+			</v-bar>
+			<div class="content pull-to-refresh-content infinite-scroll" data-ptr-distance="50">
+				<!--下拉刷新-->
+				<div class="pull-to-refresh-layer">
+					<div class="preloader"></div>
+					<div class="pull-to-refresh-arrow"></div>
+				</div>
+				<div class="union-card" v-for="item in tradeActList | check">
+					<div class="unnion-car-top" :class="{'active-radius':item.COMMNUM===0}">
+					<div class="union-title">
+						<div class="union-name" style="display:block;white-space:nowrap; overflow:hidden; text-overflow:ellipsis; font-size: 18px;">{{item.UN_TITLE}}</div>
+						<div class="union-data" style="margin: 7px 0 0 7px;">{{checkdate(item.START_TIME)}}</div>
+					</div>
+					<div class="union-content">{{item.UN_CONTENT}}</div>
+					<div class="union-foot">
+						<div class="union-foot-vote"  @click="addVote(item, $index)">
+							<img style="width: 15px; height: 15px; display:inline-block;vertical-align: middle; margin-top: -4px;" src="assets/img/mobilework/unnion-vote.png" />
+							<span>{{item.VOTENUM}}人投票</span>
+						</div>
+						<div class="union-foot-comment" @click="addComment(item, $index)">
+							<img style="width: 15px; height: 15px; display:inline-block;vertical-align: middle; margin-top: -4px;" src="assets/img/mobilework/unnion-comment.png" />
+							<span>点击评论</span>
+						</div>
+						<div class="untion-sign">
+							<span v-if="item | checkTime" class="untion-sign-name" @click="unnionSignDetail(item, 0)">报名</span>
+							<span v-else class="untion-sign-name" @click="unnionSignDetail(item, 1)">查看报名</span>
+					    </div>
+					    <!--<div class="untion-sign" v-show="{{item | checkTime}} == true">
+							<span class="untion-sign-name" @click="unnionSignDetail(item)">查看报名{{item | checkTime}}</span>
+					    </div>-->
+					</div>
+					</div>
+					<div class="unnion-car-buttom" v-show="item.COMMNUM!=0">
+					<!--<img src="assets/img/arrow-bottom.png" />-->
+					<div class="union-comment-remind"  @click="checkComment(item,$index)">
+						<span class="union--remind-title">
+							查看评论
+						</span>
+					</div>
+					<div class="union-comment-main"  v-show="$index == i" >
+						<ul v-for="common in comList">
+							<li><span class="union-comment-name">{{common.com_PERSON}}：</span><span class="union-comment-text">{{common.comm_CONTENT}}</span></li>
+						</ul>
+					</div>
+					</div>
+				</div>	
+				<div class="infinite-scroll-preloader" style="margin-bottom: 20px;"></div>
+			</div>
+			<!--preloader-->
+			<!--<div id="mark" v-if="showMessage" style="background-color: rgba(0,0,0,.5); position: fixed; top: 0; right: 0;left: 0;bottom: 0;"></div>
+		    <div class="submit-but" v-if="showMessage">
+				<textarea id="remark" placeholder="请输入评论内容"></textarea>
+				<div class="submit-content">
+				<button class="submit-ok" @click="submitOk(item)">提交</button>
+				<button class="submit-cancle" @click="submitCancle">关闭</button>
+				</div>	
+			</div>-->
+			
+			<div class="custom-dialog" v-show="showMessage">>
+				<div class="custom-dialog-layer">
+					<div class="custom-dialog-box" style="position: relative;">
+						<img @click="submitCancle" src="assets/img/cancel.png" alt="" style="position: absolute; width: 29px;height: 29px; position: absolute; top: -12px;right: -10px;"/>
+						<div class="custom-dialog-txt">
+							<textarea id="remark" name="comment-content" placeholder="请输入你的评论..."></textarea>
+						</div>
+						<div class="buttons">
+							<div class="button-box left-button">
+								<a class="dialog-button cancel" @click="submitCancle" style="color: #999999;">取消</a>
+							</div>
+							<div class="button-box ">
+								<a class="dialog-button ok" @click="submitOk(item)" style="color: #00c79f;">发表</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>

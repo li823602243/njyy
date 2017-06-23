@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<!--
+        	作者：左武洲
+        	时间：2016-06-22
+        	描述：添加投票页面
+        -->
+		<div class="page" id="page-addVote">
+			<v-bar title="新建投票">
+				<a class="pull-left icon icon-left no-transition back" slot="left"></a>
+				<!--<a class="pull-right icon" style="font-size: .7rem;font-weight: bold;" slot="right" id="page-addVote-send">发布</a>-->
+			</v-bar>
+			<div class="content add-vote-container">
+				<form id="page-addVote-subit">
+					<input type="hidden" name="STATUS" id="STATUS" value="1" />
+					<input type="hidden" name="MES_RANAGE" id="MES_RANAGE" value="1" />
+					<input type="hidden" name="VOTE_CREAT" id="CREAT_ID" value="" />
+					<div class="list-block">
+						<ul>
+							<li>
+								<div class="item-content">
+									<div class="item-inner">
+										<div class="item-title label">标&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;题：</div>
+										<div class="item-input">
+											<input type="text" placeholder="请输入标题" name="VOTE_TITLE" id="VOTE_TITLE" min="0" required/>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="item-content">
+									<div class="item-inner">
+										<div class="item-title label">开始时间：</div>
+										<div class="item-input">
+											<input type="text" name="VOTE_STAR" id="VOTE_STAR" required>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="item-content">
+									<div class="item-inner">
+										<div class="item-title label">结束时间：</div>
+										<div class="item-input">
+											<input type="text" name="VOTE_END" id="VOTE_END">
+										</div>
+									</div>
+								</div>
+							</li>
+							<li class="align-top">
+								<div class="item-content">
+									<div class="item-inner">
+										<div class="item-title label">投票说明：</div>
+										<div class="item-input">
+											<textarea name="VOTE_DESC" id="VOTE_DESC"></textarea>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="item-content">
+									<div class="item-inner">
+										<div class="item-title label">允许多选</div>
+										<div class="item-input" style="text-align: right;">
+											<label class="label-switch">
+							                <input type="checkbox" name="IS_CHOICE">
+							                <div class="checkbox"></div>
+							            </label>
+										</div>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<div class="list-block">
+						<ul id="voteItemList-first">
+							<li class="voteItemList-first"><span>投票选项</span></li>
+						</ul>
+						<ul id="voteItemList">
+
+						</ul>
+						<div class="add-vote-item">
+							<span class="icon icon-edit">新增选项</span>
+						</div>
+					</div>
+					<div id="page-addVote-send" class="vote-send">
+						<a>发布</a>
+					</div>
+				</form>
+			</div>
+
+		</div>
+	</body>
+
+</html>

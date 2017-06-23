@@ -1,0 +1,111 @@
+<!--
+页面：课程表页面
+说明：展示当天的课程安排
+创建/修改：王为娟
+时间：2016/6/13
+-->
+<!DOCTYPE html>
+<html lang="en">
+	<meta charset="utf-8">
+
+	<head>
+		<title>活动</title>
+	</head>
+
+	<body>
+
+		<div class="page" id="page-timetable">
+			<v-bar title="活动">
+				<a class="icon icon-left pull-left back no-transition" slot="left"></a>
+			</v-bar>
+			<div class="content">
+				<div class="card timetable-card" v-if="items.Mon">
+					<div class="card-left card-left-Mon" style="width: 20% !important;"><span class="week_date">周一</span></div>
+					<div class="card-right" style="width: 80% !important;">
+						<div class="card-right-wrap">
+							<div class="card-right-list" v-for="item in items.Mon">
+								<div class="card-right-title mon">{{item.begin_TIME}}~{{item.end_TIME}}</div>
+								<div class="card-right-content mon">{{item.activity_CONTENT}}</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<div class="card timetable-card" v-if="items.Tue">
+					<div class="card-left card-left-Tue" style="width: 20% !important;"><span class="week_date">周二</span></div>
+					<div class="card-right" style="width: 80% !important;">
+						<div class="card-right-wrap">
+							<div class="card-right-list" v-for="item in items.Tue">
+								<div class="card-right-title tue">{{item.begin_TIME}}~{{item.end_TIME}}</div>
+								<div class="card-right-content tue">{{item.activity_CONTENT}}</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<div class="card timetable-card" v-if="items.Wed">
+					<div class="card-left card-left-Wed" style="width: 20% !important;"><span class="week_date">周三</span></div>
+					<div class="card-right" style="width: 80% !important;">
+						<div class="card-right-wrap">
+							<div class="card-right-list" v-for="item in items.Wed">
+								<div class="card-right-title wed">{{item.begin_TIME}}~{{item.end_TIME}}</div>
+								<div class="card-right-content wed">{{item.activity_CONTENT}}</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<div class="card timetable-card" v-if="items.Thu">
+					<div class="card-left card-left-Thu" style="width: 20% !important;"><span class="week_date">周四</span></div>
+					<div class="card-right" style="width: 80% !important;">
+						<div class="card-right-wrap">
+							<div class="card-right-list" v-for="item in items.Thu">
+								<div class="card-right-title thu">{{item.begin_TIME}}~{{item.end_TIME}}</div>
+								<div class="card-right-content thu">{{item.activity_CONTENT}}</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<div class="card timetable-card" v-if="items.Fri">
+					<div class="card-left card-left-Fri" style="width: 20% !important;"><span class="week_date">周五</span></div>
+					<div class="card-right" style="width: 80% !important;">
+						<div class="card-right-wrap">
+							<div class="card-right-list" v-for="item in items.Fri">
+								<div class="card-right-title fri">{{item.begin_TIME}}~{{item.end_TIME}}</div>
+								<div class="card-right-content fri">{{item.activity_CONTENT}}</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<div class="card timetable-card" v-if="items.Sat">
+					<div class="card-left card-left-Sat" style="width: 20% !important;"><span class="week_date">周六</span></div>
+					<div class="card-right" style="width: 80% !important;">
+						<div class="card-right-wrap">
+							<div class="card-right-list" v-for="item in items.Sat">
+								<div class="card-right-title sat">{{item.begin_TIME}}~{{item.end_TIME}}</div>
+								<div class="card-right-content sat">{{item.activity_CONTENT}}</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<div class="card timetable-card" v-if="items.Sun">
+					<div class="card-left card-left-Sun" style="width: 20% !important;"><span class="week_date">周日</span></div>
+					<div class="card-right" style="width: 80% !important;">
+						<div class="card-right-wrap">
+							<div class="card-right-list" v-for="item in items.Sun">
+								<div class="card-right-title sun">{{item.begin_TIME}}~{{item.end_TIME}}</div>
+								<div class="card-right-content sun">{{item.activity_CONTENT}}</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+	</body>
+
+</html>

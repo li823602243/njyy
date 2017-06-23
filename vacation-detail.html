@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    <title>学生请假详情</title>
+    <meta charset="utf-8" />
+</head>
+
+<body>
+  <div class="page" id="page-vacation-detail">
+  <!-- 标题栏 -->
+        <v-bar title="请假申请详情">
+           <a class="icon icon-left pull-left back no-transition" slot="left"></a>
+        </v-bar>
+	    <div class="content" v-cloak>
+				<ul class="vacation-information-list" >
+					<li >
+						<label>请&nbsp;假&nbsp;&nbsp;人:</label>
+						 <span>{{vacation.clientVacateDTO.student_NAME}}</span>
+					</li>
+					
+					<li>
+						<label>请假类型:</label>
+						  <span>{{vacation.clientVacateDTO.item_VALUE}}</span>
+					</li>
+					<li>
+						<label>开始时间:</label>
+						<span>{{vacation.clientVacateDTO.start_TIME}}</span>
+					</li>
+					<li>
+						<label>结束时间:</label>
+						<span>{{vacation.clientVacateDTO.end_TIME}}</span>
+					</li>
+					<li>
+						<label>申请日期:</label>
+						<span>{{new Date(vacation.clientVacateDTO.create_TIME).toLocaleDateString()}}</span>
+					</li>
+					<li>
+						<label>请假原因:</label>
+						  <div class="repairinforimg">
+						  	<p>{{vacation.clientVacateDTO.vacate_REASON}}</p>
+						  	<ul >
+						  		<li v-for="item in getImagePath(vacation.clientVacateDTO.path)">
+						  			<!--<img src="{{item}}" />-->
+						  			<a href="{{nginx+item}}" data-lightbox="ssr">
+						  				<img src="{{nginx+item}}" data-src="{{nginx+item}}" />
+						  			</a>
+						  		</li>
+						  		
+						  	</ul>
+						  	<!--<div v-show="bigPic" v-on:click="hiddenBigPic()" class="icain-mark-layer" transition="mark"></div>
+					  		<img v-show="bigPic" class="icain-bigPic-layer" transition="bigPic" :src="nigx+bigPicSrc" alt="大图" />-->
+						  	<div class="clearfix"></div>
+						  </div>
+						
+					</li>
+				</ul>
+				<div id="page-vacate-send" class="vote-send" v-on:click="MD5(vacation.clientVacateDTO.md5CODE)" v-if="roleId==1 && cancelBtn" style="width: 92%; border-radius: 10px; margin: 0 auto 15px;">
+					<a>撤销</a>
+			    </div>
+	    </div>
+  </div>
+</body>
+</html>
+

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>一幼圈详情</title>
+	</head>
+
+	<body>
+		<div class="page bg-white" id="yy-circle-detail">
+			<v-bar title="班级圈详情">
+				<a class="icon icon-left pull-left back no-transition" slot="left"></a>
+			</v-bar>
+			<div class="content class-detail-content">
+				<div class="card class-card-style" v-cloak>
+					<div class="card-header no-border list-card-header-style">
+						<div class="class-card-hearder">
+							<img src="{{nginx+circleInfo.headPortraitPath}}" width="37" height="37" />
+						</div>
+						<div class="class-card-hearder " style="width: 70%;">
+							<div class="class-name-style">{{circleInfo.NAME}}</div>
+							<div class="class-time-style">{{circleInfo.CLA_DATE}}</div>
+						</div>
+					</div>
+					<div class="card-content">
+						<div class="card-content-inner class-card-content">{{circleInfo.CLA_CONTENT}}</div>
+						<div class="yy-circle-item-image-content clearfix">
+							<div v-for="path in getImagePath(circleInfo.PATH)">
+								<img class="yy-circle-item-image" src="" data-src="{{path}}"/>
+							</div>
+						</div>
+					</div>
+
+					<div class="class-comment" v-if="commentsList.length>0">
+						<ul class="comment-list">
+							<li v-for="item in commentsList">
+								<div class="class-comment-content">
+								<a class="class-commenter">{{item.CRITIC_NAME}}:</a>{{item.COM_CONTENT}}</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>

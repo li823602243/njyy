@@ -1,0 +1,51 @@
+<!--
+页面：工作日历页面
+说明：展示当天的工作和个人安排
+创建/修改：王为娟
+时间：2016/6/6
+-->
+<!DOCTYPE html>
+<html lang="en">
+	<meta charset="utf-8">
+
+	<head>
+		<title>食谱</title>
+		<style type="text/css">
+
+		</style>
+	</head>
+
+	<body>
+
+		<div class="page" id="canteen">
+			<v-bar title="食谱" :istab="true" :tab1title="selecttime">
+				<a class=" icon icon-left pull-left back no-transition" slot="left"></a>
+			</v-bar>
+			<div class="content" v-cloak>
+				<div id="calentime" style="width: 100%;margin-top: 35px;" v-show="show"></div>
+				<img class="canteen_click" v-bind:class="{ canteen_click_close: showTop }" src="assets/img/canteen/button_click.png" @click="choose" />
+				<div class="canteen_card_close" v-bind:class="{ canteen_card: showTop }" v-if="showContent">
+					<div class="canteen-warp">
+						<div class="canteen-title"><img class="canteen-avar" src="assets/img/canteen/icon_food2.png" /><span class="canteen-title">早餐</span></div>
+						<ul>
+							<li class="canteen_list" v-for="item in items| filterBy '701' in 'eat_TYPE'"><span>{{item.food_NAME}}</span><img id="like{{item.recipes_INFO_ID}}" v-if="item.status==1" @click="chooseLike(item)" class="canteen-avar-like" src="assets/img/canteen/Like.png" /><img id="like{{item.food_ID}}" v-else @click="chooseLike(item)" class="canteen-avar-like" src="assets/img/canteen/unLike.png" /></li>
+						</ul>
+					</div>
+					<div class="canteen-warp">
+						<div class="canteen-title"><img class="canteen-avar" src="assets/img/canteen/icon_food5.png" /><span class="canteen-title">午餐</span></div>
+						<ul>
+							<li class="canteen_list" v-for="item in items| filterBy '702' in 'eat_TYPE'"><span>{{item.food_NAME}}</span><img id="like{{item.recipes_INFO_ID}}" v-if="item.status==1" @click="chooseLike(item)" class="canteen-avar-like" src="assets/img/canteen/Like.png" /><img id="like{{item.food_ID}}" v-else @click="chooseLike(item)" class="canteen-avar-like" src="assets/img/canteen/unLike.png" /></li>
+						</ul>
+					</div>
+					<div class="canteen-warp">
+						<div class="canteen-title"><img class="canteen-avar" src="assets/img/canteen/icon_cup3.png" /><span class="canteen-title">下午茶</span></div>
+						<ul>
+							<li class="canteen_list" v-for="item in items| filterBy '703' in 'eat_TYPE'"><span>{{item.food_NAME}}</span><img id="like{{item.recipes_INFO_ID}}" v-if="item.status==1" @click="chooseLike(item)" class="canteen-avar-like" src="assets/img/canteen/Like.png" /><img id="like{{item.food_ID}}" v-else @click="chooseLike(item)" class="canteen-avar-like" src="assets/img/canteen/unLike.png" /></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>

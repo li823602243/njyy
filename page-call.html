@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>点名</title>
+	</head>
+
+	<body>
+		<div class="page" id="page-call">
+			<v-bar title="班级点名">
+				<a class="icon icon-left pull-left no-transition back" slot="left"></a>
+			</v-bar>
+			<nav class="bar bar-footer call-footer" v-show="nowdate">
+				<button class="submit call-ok" v-if="nowdate==1 && nowTime<10">提交点名</button>
+			</nav>
+			<div class="content call">
+				<div class="call-content">
+					<div id="choosedate"></div>
+					<div id="tab-nav-1" class="call-tab icain-tab clearfix" v-if="nowdate==1">
+						<a href="#tab1" class="tab-link tab-link-first active">全部学生<i>{{allStudent.length+valist.length}}</i></a>
+						<a href="#tab2" class="tab-link">未到学生<i>{{call}}</i> </a>
+						<a href="#tab3" class="tab-link ">请假学生<i>{{valist.length}}</i>
+						</a>
+					</div>
+					<div id="tab-nav-1" class="call-tab icain-tab clearfix" v-if="nowdate==0">
+						<a href="#tab1" class="tab-link tab-link-first active">已到学生<i>{{num3}}</i></a>
+						<a href="#tab2" class="tab-link">未到学生<i>{{num1}}</i> </a>
+						<a href="#tab3" class="tab-link ">请假学生<i>{{num2}}</i>
+						</a>
+					</div>
+					<div id="tab-nav-1" class="call-tab icain-tab clearfix" v-if="nowdate==2">
+						<a href="#tab1" class="tab-link tab-link-first active tab-link-style">全部学生<i>{{allStudent.length+valist.length}}</i></a>
+						<a href="#tab3" class="tab-link tab-link-style">请假学生<i>{{rr}}</i>
+						</a>
+					</div>
+				</div>
+
+				<div class="tip" v-show="nowdate==1">
+					<label>注意:点名提交最晚时间为10:00</label>
+				</div>
+				<div class="call-block">
+					<div class="tabs">
+						<div id="tab1" class="tab icain-tab active">
+							<ul class="call-list clearfix">
+								<li v-for="item in allStudent" v-show="nowdate">
+									<label>{{item.STU_NAME}}</label>
+									<button v-if="nowTime<10" data-index="{{$index}}">已到</button>
+								</li>
+								<li v-show="nowdate==0" v-for="item in stlist | filterBy '-1' in 'status'">
+									<label>{{item.name}}</label>
+								</li>
+							</ul>
+							<ul class="call-vacate" v-show="nowdate">
+								<li v-for="item in valist">
+									<label>{{item.STU_NAME}}</label>
+									<button data-index="{{$index}}" style="background-color: red;">已请假</button>
+								</li>
+
+							</ul>
+
+						</div>
+						<div id="tab2" class="tab icain-tab">
+							<ul class="call-list clearfix">
+								<li v-for="item in allStudent |filterBy '0' in 'STATUS' " v-show="nowdate">
+									<label>{{item.STU_NAME}}</label>
+
+								</li>
+								<li v-show="nowdate==0" v-for="item in stlist | filterBy '0' in 'status'">
+									<label>{{item.name}}</label>
+
+								</li>
+							</ul>
+						</div>
+						<div id="tab3" class="tab icain-tab">
+							<ul class="call-list clearfix">
+								<li v-for="item in valist | filterBy '-3' in 'STATUS'" v-show="nowdate">
+									<label>{{item.STU_NAME}}</label>
+
+								</li>
+								<li v-show="nowdate==0" v-for="item in stlist | filterBy '-3' in 'status'">
+									<label>{{item.name}}</label>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				
+				<div class="submit-but" v-if="show">
+					<textarea id="remark" placeholder="请输入备注信息"></textarea>
+					<div class="submit-content">
+					<button class="submit-ok" @click="submitOk">提交</button>
+					<button class="submit-cancle" @click="submitCancle">关闭</button>
+					</div>	
+				</div>
+
+			</div>
+
+		</div>
+	</body>
+
+</html>
